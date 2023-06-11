@@ -19,8 +19,6 @@ public class Project {
 
     }
 
-
-
     public String getProjectId() {
         return projectId;
     }
@@ -102,12 +100,4 @@ public class Project {
         this.projectStatus = projectStatus;
     }
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "projectId='" + projectId + '\'' +
-                ", projectName='" + projectName + '\'' +
-                ", projectStatus='" + projectStatus + '\'' +
-                '}';
-    }
 }
