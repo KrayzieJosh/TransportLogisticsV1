@@ -41,15 +41,17 @@ public class Project {
         return siteManagers;
     }
 
-
     @Override
     public String toString() {
         return "Project{" +
                 "projectId='" + projectId + '\'' +
                 ", projectName='" + projectName + '\'' +
                 ", projectStatus='" + projectStatus + '\'' +
+                ", projectManagers=" + projectManagers +
+                ", siteManagers=" + siteManagers +
                 '}';
     }
+
     public static class ProjectBuilder{
         private String projectId;
         private String projectName;
