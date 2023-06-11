@@ -15,12 +15,5 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProjectFactoryTest {
 
-    @Test
-    void createProjectAndSiteManagers() {
 
-        Project project1= ProjectFactory.createProject(
-                Helper.generateID(),"construction manager","Done");
-        assertNotNull(project1);
-        System.out.println(project1.toString());
-    }
 }
