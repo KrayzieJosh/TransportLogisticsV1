@@ -14,6 +14,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProjectFactoryTest {
+@Test
+    public void createProject(){
 
+    Project project = ProjectFactory.createProject(Helper.generateID(),"Project1","In progress");
+    assertNotNull(project);
+    System.out.println(project.toString());
+
+
+}
 
 }
