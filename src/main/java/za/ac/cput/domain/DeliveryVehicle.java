@@ -8,7 +8,7 @@ package za.ac.cput.domain;
 public class DeliveryVehicle {
     private String vehicleId;
     private String vehicleName;
-    private String vehicleLicence;
+    private String vehicleLicenceExpiry;
     private Double vehicleLoadCapacity;
     private Boolean isAvailable;
 
@@ -16,7 +16,7 @@ public class DeliveryVehicle {
     private DeliveryVehicle(Builder builder){
         this.vehicleId = builder.vehicleId;
         this.vehicleName = builder.vehicleName;
-        this.vehicleLicence = builder.vehicleLicence;
+        this.vehicleLicenceExpiry = builder.vehicleLicenceExpiry;
         this.vehicleLoadCapacity = builder.vehicleLoadCapacity;
         this.isAvailable = builder.isAvailable;
     }
@@ -28,7 +28,7 @@ public class DeliveryVehicle {
     public String getVehicleName() {
         return vehicleName;
     }
-    public String getVehicleLicence(){return vehicleLicence;}
+    public String getVehicleLicenceExpiry(){return vehicleLicenceExpiry;}
 
     public Double getVehicleLoadCapacity() {
         return vehicleLoadCapacity;
@@ -43,7 +43,7 @@ public class DeliveryVehicle {
         return "DeliveryVehicle{" +
                 "vehicleId='" + vehicleId + '\'' +
                 ", vehicleName='" + vehicleName + '\'' +
-                ", vehicleLicence=" + vehicleLicence +'\''+
+                ", vehicleLicenceExpiry=" + vehicleLicenceExpiry +'\''+
                 ", vehicleLoadCapacity=" + vehicleLoadCapacity +
                 ", isAvailable=" + isAvailable +
                 '}';
@@ -51,7 +51,7 @@ public class DeliveryVehicle {
     public static class Builder{
         private String vehicleId;
         private String vehicleName;
-        private String vehicleLicence;
+        private String vehicleLicenceExpiry;
         private Double vehicleLoadCapacity;
         private Boolean isAvailable;
 
@@ -64,8 +64,8 @@ public class DeliveryVehicle {
             this.vehicleName = vehicleName;
             return this;
         }
-        public Builder setVehicleLicence(String vehicleLicence) {
-            this.vehicleLicence = vehicleLicence;
+        public Builder setVehicleLicenceExpiry(String vehicleLicenceExpiry) {
+            this.vehicleLicenceExpiry = vehicleLicenceExpiry;
             return this;
         }
 
@@ -81,7 +81,7 @@ public class DeliveryVehicle {
         public Builder copy(DeliveryVehicle deliveryVehicle){
             this.vehicleId = deliveryVehicle.vehicleId;
             this.vehicleName = deliveryVehicle.vehicleName;
-            this.vehicleLicence = deliveryVehicle.vehicleLicence;
+            this.vehicleLicenceExpiry = deliveryVehicle.vehicleLicenceExpiry;
             this.vehicleLoadCapacity = deliveryVehicle.vehicleLoadCapacity;
             this.isAvailable = deliveryVehicle.isAvailable;
             return this;
