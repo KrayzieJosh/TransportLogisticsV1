@@ -55,7 +55,7 @@ public class Project {
             return this;
         }
 
-        public Project.ProjectBuilder copyManagers(Project project){
+        public Project.ProjectBuilder copy(Project project){
             this.projectId=project.projectId;
             this.projectName=project.projectName;
             this.projectStatus=project.projectStatus;
