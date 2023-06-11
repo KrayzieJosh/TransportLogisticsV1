@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class ProjectManagerRepositoryImplTest {
 private static ProjectManagerRepositoryImpl projectManagerRepository= ProjectManagerRepositoryImpl.getProjectManagerRepository();
-private static List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project2","Done"));
+private static List<Project> projects= Arrays.asList();
 private static ProjectManager manager= ProjectManagerFactory.createProjectManager( Helper.generateID(),"Foreman",projects);
 
 

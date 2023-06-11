@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SiteManagerRepositoryImplTest {
 
     private static SiteManagerRepositoryImpl siteManagerRepository= SiteManagerRepositoryImpl.getSiteManagerRepository();
-    private static List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project2","Done"));
+    private static List<Project> projects= Arrays.asList();
     private static SiteManager manager= SiteManagerFactory.createSiteManager( Helper.generateID(),"Construction Manager",projects);
     @Test
     void a_create() {

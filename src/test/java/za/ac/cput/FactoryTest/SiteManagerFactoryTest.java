@@ -16,7 +16,7 @@ class SiteManagerFactoryTest {
     @Test
     public void createSiteManager() {
 
-        List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project4","In progress"));
+        List<Project> projects= Arrays.asList();
 
 
         SiteManager manager= SiteManagerFactory.createSiteManager(
