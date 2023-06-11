@@ -28,6 +28,6 @@ public class DeliveryHistoryFactoryTest extends TestCase {
 
         DeliveryHistory deliveryHistory = DeliveryHistoryFactory.createNewDeliveryHistory(Helper.generateID(), listOfUsers, Helper.generateID());
         assertNotNull(deliveryHistory);
-        deliveryHistory.toString();
+        System.out.println(deliveryHistory.toString());
     }
 }
