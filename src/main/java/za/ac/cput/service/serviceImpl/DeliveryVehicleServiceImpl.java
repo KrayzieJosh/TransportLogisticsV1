@@ -1,5 +1,11 @@
 package za.ac.cput.service.serviceImpl;
 
+/* DeliveryVehicleServiceImpl.java
+ Entity for the serviceImpl
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.repository.DeliveryVehicleRepository;
 import za.ac.cput.repository.repositoryImpl.DeliveryVehicleRepositoryImpl;

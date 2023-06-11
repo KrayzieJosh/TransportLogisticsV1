@@ -1,4 +1,11 @@
 package za.ac.cput.service.serviceImpl;
+
+/* UserServiceImpl.java
+ Entity for the serviceImpl
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import za.ac.cput.repository.repositoryImpl.UserRepositoryImpl;
