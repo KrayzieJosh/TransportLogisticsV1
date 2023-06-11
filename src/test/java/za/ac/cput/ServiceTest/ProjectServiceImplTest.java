@@ -5,55 +5,53 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Company;
 import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
-import za.ac.cput.factory.ProjectManagerFactory;
+import za.ac.cput.factory.CompanyFactory;
+import za.ac.cput.factory.ProjectFactory;
 import za.ac.cput.service.CompanyService;
-import za.ac.cput.service.ProjectManagerService;
-import za.ac.cput.service.serviceImpl.ProjectManagerServiceImpl;
+import za.ac.cput.service.ProjectService;
+import za.ac.cput.service.serviceImpl.ProjectServiceImpl;
+import za.ac.cput.service.serviceImpl.SiteManagerServiceImpl;
 import za.ac.cput.util.Helper;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
+class ProjectServiceImplTest {
 
-class ProjectManagerServiceImplTest {
+    private static ProjectService service=null;
 
-    private static ProjectManagerService service=null;
-    private static List<Project> projects= Arrays.asList();
-    private static List<SiteManager> managers=Arrays.asList();
+    public static Project project= ProjectFactory.createProject(Helper.generateID(), "Project2", "Done"
+            );
 
-    public static ProjectManager manager= ProjectManagerFactory.createProjectManager(Helper.generateID(),"Unavailable",projects,managers);
-    public ProjectManagerServiceImplTest(){
+    public ProjectServiceImplTest(){
 
-        service= ProjectManagerServiceImpl.getService();
+        service= ProjectServiceImpl.getService();
     }
     @Test
     void a_create() {
-        ProjectManager created=service.create(manager);
+        Project created=service.create(project);
         System.out.println("Create: "+created);
         assertNotNull(created);
     }
 
     @Test
     void b_read() {
-        ProjectManager read = service.read(manager.getUserId());
+        Project read = service.read(project.getProjectId());
         System.out.println("Read: "+read);
         assertNotNull(read);
     }
 
     @Test
     void c_update() {
-        ProjectManager updated = new ProjectManager.ProjectManagerBuilder().copy(manager).setUserPosition("Fired").build();
+
+        Project updated = new Project.ProjectBuilder().copy(project).setProjectStatus("In progress")
+                .build();
         assertNotNull(service.update(updated));
         System.out.println("Updated: "+updated);
     }
 
     @Test
     void e_delete() {
-        String id= manager.getUserId();
+        String id=project.getProjectId();
         boolean success=service.delete(id);
         assertTrue(success);
         System.out.println("Success: "+ success);
