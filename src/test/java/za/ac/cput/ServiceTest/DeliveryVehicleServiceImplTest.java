@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.factory.DeliveryVehicleFactory;
 import za.ac.cput.service.DeliveryVehicleService;
-import za.ac.cput.service.DeliveryVehicleServiceImpl;
+import za.ac.cput.service.serviceImpl.DeliveryVehicleServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
