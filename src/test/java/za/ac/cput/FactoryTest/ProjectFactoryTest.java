@@ -17,10 +17,9 @@ class ProjectFactoryTest {
 
     @Test
     void createProjectAndSiteManagers() {
-        List<ProjectManager>projectManager= Arrays.asList();
-        List<SiteManager>siteManagers=Arrays.asList();
-        Project project1= ProjectFactory.createProjectAndSiteManagers(
-                Helper.generateID(),"construction manager","Done",projectManager,siteManagers);
+
+        Project project1= ProjectFactory.createProject(
+                Helper.generateID(),"construction manager","Done");
         assertNotNull(project1);
         System.out.println(project1.toString());
     }

@@ -7,16 +7,13 @@ import za.ac.cput.util.Helper;
 import java.util.List;
 
 public class ProjectFactory {
-    public static Project createProjectAndSiteManagers(String projectId, String projectName, String projectStatus,
-                                                       List<ProjectManager>projectManagers, List<SiteManager>siteManagers){
+    public static Project createProject(String projectId, String projectName, String projectStatus){
         projectId= Helper.generateID();
-        if(Helper.isNullOrEmpty(projectId)||Helper.isNullOrEmpty(projectName)||Helper.isNullOrEmpty(projectStatus)
-            ||Helper.isNullOrEmpty(String.valueOf(projectManagers))||Helper.isNullOrEmpty(String.valueOf(siteManagers))){
+        if(Helper.isNullOrEmpty(projectId)||Helper.isNullOrEmpty(projectName)||Helper.isNullOrEmpty(projectStatus)){
 
             return null;
         }
 
-return new Project.ProjectBuilder().setProjectId(projectId).setProjectName(projectName).setProjectStatus(projectStatus)
-        .setProjectManagers(projectManagers).setSiteManagers(siteManagers).build();
+return new Project.ProjectBuilder().setProjectId(projectId).setProjectName(projectName).setProjectStatus(projectStatus).build();
     }
 }
