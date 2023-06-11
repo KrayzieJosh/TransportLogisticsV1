@@ -13,7 +13,7 @@ public class DeliveryHistoryServiceImpl implements DeliveryHistoryService {
     private DeliveryHistoryRepository repository = null;
     private DeliveryHistoryServiceImpl() {repository = DeliveryHistoryRepositoryImpl.getRepository();}
 
-    private static DeliveryHistoryService getService(){
+    public static DeliveryHistoryService getService(){
         if(service == null){
             service = new DeliveryHistoryServiceImpl();
         }

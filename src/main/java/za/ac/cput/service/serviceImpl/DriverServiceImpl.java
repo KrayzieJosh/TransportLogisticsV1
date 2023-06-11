@@ -15,7 +15,7 @@ public class DriverServiceImpl implements DriverService {
 
     private DriverServiceImpl() {repository = DriverRepositoryImpl.getRepository();}
 
-    private static DriverService getService() {
+    public static DriverService getService() {
         if (service == null) {
             service = new DriverServiceImpl();
         }
