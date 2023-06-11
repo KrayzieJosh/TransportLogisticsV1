@@ -6,7 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.User;
 import za.ac.cput.factory.UserFactory;
 import za.ac.cput.service.UserService;
-import za.ac.cput.service.UserServiceImpl;
+import za.ac.cput.service.serviceImpl.UserServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
