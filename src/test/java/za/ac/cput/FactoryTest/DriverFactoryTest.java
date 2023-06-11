@@ -9,7 +9,10 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.domain.Project;
+import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.factory.DriverFactory;
+import za.ac.cput.factory.ProjectFactory;
+import za.ac.cput.factory.ProjectManagerFactory;
 import za.ac.cput.util.Helper;
 
 import java.util.ArrayList;
@@ -17,8 +20,10 @@ import java.util.Arrays;
 
 public class DriverFactoryTest extends TestCase {
 
-    ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( new Project(Helper.generateID(), "HillSong Project","Almost done"),
-                                                                        new Project(Helper.generateID(), "Red Flag Project", "Must Started")));
+    //Creating ArrayList:
+    Project project1 = new ProjectFactory(Helper.generateID(), "Code Red Project", "Almost Done");
+    Project project2 = new ProjectFactory(Helper.generateID(), "Sky House Project", "Completed");
+    ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( project1, project2));
 
     @Test
     public void testCreateNewDriver() {
