@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.domain.Project;
 import za.ac.cput.factory.DriverFactory;
+import za.ac.cput.factory.ProjectFactory;
 import za.ac.cput.service.DriverService;
 import za.ac.cput.service.serviceImpl.DriverServiceImpl;
 import za.ac.cput.util.Helper;
@@ -25,8 +26,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DriverServiceImplTest {
 
     //arraylist:
-    static ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( new Project(Helper.generateID(), "HillSong Project","Almost done"),
-            new Project(Helper.generateID(), "Red Flag Project", "Must Started")));
+    static Project project1 = ProjectFactory.createProject(Helper.generateID(), "Sky House Project", "Completed");
+    static Project project2 = ProjectFactory.createProject(Helper.generateID(), "Blue Tower Project", "Almost Done");
+    static ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( project1, project2));
 
 
     private static DriverService service = null;

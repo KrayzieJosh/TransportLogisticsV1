@@ -11,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.domain.Project;
 import za.ac.cput.factory.DriverFactory;
+import za.ac.cput.factory.ProjectFactory;
 import za.ac.cput.repository.repositoryImpl.DriverRepositoryImpl;
 import za.ac.cput.util.Helper;
 
@@ -22,8 +23,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class DriverRepositoryImplTest {
 
-    static ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( new Project(Helper.generateID(), "HillSong Project","Almost done"),
-            new Project(Helper.generateID(), "Red Flag Project", "Must Started")));
+    //Creating ArrayList:
+    static Project project1 = ProjectFactory.createProject(Helper.generateID(), "Sky House Project", "Completed");
+    static Project project2 = ProjectFactory.createProject(Helper.generateID(), "Blue Tower Project", "Almost Done");
+    static ArrayList<Project> listOfProjects = new ArrayList<Project>(Arrays.asList( project1, project2));
 
     private static DriverRepositoryImpl repository = DriverRepositoryImpl.getRepository();
     private static Driver driver = DriverFactory.createNewDriver(Helper.generateID(), "Test Position", listOfProjects, Helper.generateID());
