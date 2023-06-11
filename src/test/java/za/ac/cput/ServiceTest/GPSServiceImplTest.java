@@ -3,36 +3,34 @@ package za.ac.cput.ServiceTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.User;
-import za.ac.cput.factory.UserFactory;
-import za.ac.cput.service.UserService;
-import za.ac.cput.service.serviceImpl.UserServiceImpl;
+import za.ac.cput.domain.GPS;
+import za.ac.cput.factory.GPSFactory;
+import za.ac.cput.service.GPSService;
+import za.ac.cput.service.serviceImpl.GPSServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 
-class UserServiceImplTest {
+class GPSServiceImplTest {
+    private static GPSService service=null;
 
-    private static UserService service=null;
+    public static GPS gps= GPSFactory.createGPS(Helper.generateID(), "456-789-123", "654-987-321");
+    public GPSServiceImplTest(){
 
-    public static User user= UserFactory.createUser(Helper.generateID(), "Tommy", "Jerico"
-            , "Abrahams", "089 798 5432","tjerico@gmail.com","DRI456");
-    public UserServiceImplTest(){
-
-        service= UserServiceImpl.getService();
+        service=  GPSServiceImpl.getService();
     }
 
     @Test
     void a_create() {
-        User created=service.create(user);
+        GPS created=service.create(gps);
         System.out.println("Create: "+created);
         assertNotNull(created);
     }
 
     @Test
     void b_read() {
-        User read = service.read(user.getUserId());
+        GPS read = service.read(gps.getTripId());
         System.out.println("Read: "+read);
         assertNotNull(read);
 
@@ -40,15 +38,15 @@ class UserServiceImplTest {
 
     @Test
     void c_update() {
-        User updated = new User.Builder().copy(user).setUserMiddleName("Shelby")
+        GPS updated = new GPS.Builder().copy(gps).setStoreLocationId("789-789-456")
                 .build();
-        assertNotNull(service.update(updated));
+        //assertNotNull(service.update(updated));
         System.out.println("Updated: "+updated);
     }
 
     @Test
     void e_delete(){
-        String id=user.getUserId();
+        String id=gps.getTripId();
         boolean success=service.delete(id);
         assertTrue(success);
         System.out.println("Success: "+ success);

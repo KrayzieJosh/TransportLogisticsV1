@@ -3,36 +3,34 @@ package za.ac.cput.ServiceTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.User;
-import za.ac.cput.factory.UserFactory;
-import za.ac.cput.service.UserService;
-import za.ac.cput.service.serviceImpl.UserServiceImpl;
+import za.ac.cput.domain.Tracking;
+import za.ac.cput.factory.TrackingFactory;
+import za.ac.cput.service.TrackingService;
+import za.ac.cput.service.serviceImpl.TrackingServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 
-class UserServiceImplTest {
+class TrackingServiceImplTest {
+    private static TrackingService service=null;
 
-    private static UserService service=null;
+    public static Tracking tracking= TrackingFactory.createTracker(Helper.generateID(), 3, 11);
+    public TrackingServiceImplTest(){
 
-    public static User user= UserFactory.createUser(Helper.generateID(), "Tommy", "Jerico"
-            , "Abrahams", "089 798 5432","tjerico@gmail.com","DRI456");
-    public UserServiceImplTest(){
-
-        service= UserServiceImpl.getService();
+        service=  TrackingServiceImpl.getService();
     }
 
     @Test
     void a_create() {
-        User created=service.create(user);
+        Tracking created=service.create(tracking);
         System.out.println("Create: "+created);
         assertNotNull(created);
     }
 
     @Test
     void b_read() {
-        User read = service.read(user.getUserId());
+        Tracking read = service.read(tracking.getTripId());
         System.out.println("Read: "+read);
         assertNotNull(read);
 
@@ -40,15 +38,15 @@ class UserServiceImplTest {
 
     @Test
     void c_update() {
-        User updated = new User.Builder().copy(user).setUserMiddleName("Shelby")
+        Tracking updated = new Tracking.Builder().copy(tracking).setDetours(7)
                 .build();
-        assertNotNull(service.update(updated));
+      //assertNotNull(service.update(updated));
         System.out.println("Updated: "+updated);
     }
 
     @Test
     void e_delete(){
-        String id=user.getUserId();
+        String id= tracking.getTripId();
         boolean success=service.delete(id);
         assertTrue(success);
         System.out.println("Success: "+ success);

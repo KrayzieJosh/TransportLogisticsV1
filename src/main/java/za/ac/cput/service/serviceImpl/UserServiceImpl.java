@@ -1,5 +1,4 @@
-package za.ac.cput.service;
-import za.ac.cput.domain.DeliveryVehicle;
+package za.ac.cput.service.serviceImpl;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 import za.ac.cput.repository.repositoryImpl.UserRepositoryImpl;

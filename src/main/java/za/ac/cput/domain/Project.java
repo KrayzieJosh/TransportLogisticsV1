@@ -19,8 +19,6 @@ public class Project {
 
     }
 
-
-
     public String getProjectId() {
         return projectId;
     }
@@ -96,6 +94,12 @@ public class Project {
             return new Project(this);
 
         }
+    }
+
+    public Project(String projectId, String projectName, String projectStatus) {
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.projectStatus = projectStatus;
     }
 
 }

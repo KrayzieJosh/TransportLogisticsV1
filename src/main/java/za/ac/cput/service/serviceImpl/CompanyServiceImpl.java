@@ -1,8 +1,10 @@
-package za.ac.cput.service;
+package za.ac.cput.service.serviceImpl;
 
 import za.ac.cput.domain.Company;
 import za.ac.cput.repository.CompanyRepository;
 import za.ac.cput.repository.repositoryImpl.CompanyRepositoryImpl;
+import za.ac.cput.service.CompanyService;
+
 import java.util.Set;
 
 public class CompanyServiceImpl implements CompanyService {
