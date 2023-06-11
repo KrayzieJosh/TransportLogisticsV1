@@ -15,7 +15,7 @@ class ProjectManagerFactoryTest {
 
     @Test
     public void createProjectManager() {
-        List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project1","Done"));
+        List<Project> projects= Arrays.asList();
         ProjectManager manager= ProjectManagerFactory.createProjectManager(
                 Helper.generateID(),"Foreman",projects);
 assertNotNull(manager);

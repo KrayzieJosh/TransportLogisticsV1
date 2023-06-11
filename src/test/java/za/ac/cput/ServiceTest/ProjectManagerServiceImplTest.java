@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProjectManagerServiceImplTest {
 
     private static ProjectManagerService service=null;
-    private static List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project2","Done"));
+    private static List<Project> projects= Arrays.asList();
 
     public static ProjectManager manager= ProjectManagerFactory.createProjectManager(Helper.generateID(),"Unavailable",projects);
     public ProjectManagerServiceImplTest(){

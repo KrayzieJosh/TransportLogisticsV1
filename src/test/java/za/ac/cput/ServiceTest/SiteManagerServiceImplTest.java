@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SiteManagerServiceImplTest {
     private static SiteManagerService service=null;
-    private static List<Project> projects= Arrays.asList(new Project(Helper.generateID(),"Project2","Done"));
+    private static List<Project> projects= Arrays.asList();
 
     public static SiteManager manager= SiteManagerFactory.createSiteManager(Helper.generateID(),"Unavailable",projects);
     public SiteManagerServiceImplTest(){
