@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Company.java
+ Entity for the domain
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 public class Company  {
     private String companyId;
     private String companyName;
@@ -75,7 +81,7 @@ public class Company  {
             this.companyEmail = companyEmail;
             return this;
         }
-        public Builder copy(Company company){ // sets the values of the builder based on an existing builder object
+        public Builder copy(Company company){
             this.companyId = company.companyId;
             this.companyName = company.companyName;
             this.companyAddress = companyAddress;
@@ -85,7 +91,7 @@ public class Company  {
         }
         public Company build(){
             return new Company(this);
-            //constructs a new company object, using the values set in the builder and returns it
+
         }
     }
 }
