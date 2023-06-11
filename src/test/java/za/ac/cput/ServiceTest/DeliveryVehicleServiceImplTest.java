@@ -1,5 +1,11 @@
 package za.ac.cput.ServiceTest;
 
+/* DeliveryVehicleServiceImplTest.java
+ Package: ServiceTest
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -15,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DeliveryVehicleServiceImplTest {
     private static DeliveryVehicleService service=null;
-    public static DeliveryVehicle deliveryVehicle = DeliveryVehicleFactory.createDeliveryVehicle(Helper.generateID(), "Izuzu Delivery Vehicle", 25000.00
+    public static DeliveryVehicle deliveryVehicle = DeliveryVehicleFactory.createDeliveryVehicle(Helper.generateID(), "Izuzu Delivery Vehicle","04/09/2023",25000.00
             , true);
     public DeliveryVehicleServiceImplTest(){
 
