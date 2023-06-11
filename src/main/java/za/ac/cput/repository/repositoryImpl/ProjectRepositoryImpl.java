@@ -55,7 +55,7 @@ public class ProjectRepositoryImpl  implements ProjectRepository {
             return false;
         }
         projectDB.remove(projectToDelete);
-        return false;
+        return true;
     }
 
     @Override
