@@ -7,6 +7,7 @@ package za.ac.cput.domain;
 
 public class Location {
     private String locationId;
+    private String name;
     private int streetNumber;
     private String streetName;
     private String townOrCity;
@@ -14,6 +15,7 @@ public class Location {
 
     public Location(Location.Builder builder){
         this.locationId = builder.locationId;
+        this.name = builder.name;
         this.streetNumber = builder.streetNumber;
         this.streetName = builder.streetName;
         this.townOrCity = builder.townOrCity;
@@ -22,6 +24,9 @@ public class Location {
 
     public String getLocationId() {
         return locationId;
+    }
+    public String getName() {
+        return name;
     }
 
     public int getStreetNumber() {
@@ -52,13 +57,18 @@ public class Location {
     }
     public static class Builder{
         private String locationId;
+        private String name;
         private int streetNumber;
         private String streetName;
         private String townOrCity;
         private int areaCode;
 
-        public Builder setLocationId(String id) {
+        public Builder setLocationId(String locationId) {
             this.locationId = locationId;
+            return this;
+        }
+        public Builder setName(String name){
+            this.name =name;
             return this;
         }
 
@@ -83,6 +93,7 @@ public class Location {
         }
         public Builder copy(Location location){
             this.locationId = locationId;
+            this.name = name;
             this.streetNumber = streetNumber;
             this.streetName = streetName;
             this.townOrCity = townOrCity;
