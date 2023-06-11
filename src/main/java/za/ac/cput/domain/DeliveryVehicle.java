@@ -1,14 +1,22 @@
 package za.ac.cput.domain;
 
+/* DeliveryVehicle.java
+ Entity for the domain
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
 public class DeliveryVehicle {
     private String vehicleId;
     private String vehicleName;
+    private String vehicleLicence;
     private Double vehicleLoadCapacity;
     private Boolean isAvailable;
+
 
     private DeliveryVehicle(Builder builder){
         this.vehicleId = builder.vehicleId;
         this.vehicleName = builder.vehicleName;
+        this.vehicleLicence = builder.vehicleLicence;
         this.vehicleLoadCapacity = builder.vehicleLoadCapacity;
         this.isAvailable = builder.isAvailable;
     }
@@ -20,6 +28,7 @@ public class DeliveryVehicle {
     public String getVehicleName() {
         return vehicleName;
     }
+    public String getVehicleLicence(){return vehicleLicence;}
 
     public Double getVehicleLoadCapacity() {
         return vehicleLoadCapacity;
@@ -34,6 +43,7 @@ public class DeliveryVehicle {
         return "DeliveryVehicle{" +
                 "vehicleId='" + vehicleId + '\'' +
                 ", vehicleName='" + vehicleName + '\'' +
+                ", vehicleLicence=" + vehicleLicence +'\''+
                 ", vehicleLoadCapacity=" + vehicleLoadCapacity +
                 ", isAvailable=" + isAvailable +
                 '}';
@@ -41,6 +51,7 @@ public class DeliveryVehicle {
     public static class Builder{
         private String vehicleId;
         private String vehicleName;
+        private String vehicleLicence;
         private Double vehicleLoadCapacity;
         private Boolean isAvailable;
 
@@ -53,6 +64,10 @@ public class DeliveryVehicle {
             this.vehicleName = vehicleName;
             return this;
         }
+        public Builder setVehicleLicence(String vehicleLicence) {
+            this.vehicleLicence = vehicleLicence;
+            return this;
+        }
 
         public Builder setVehicleLoadCapacity(Double vehicleLoadCapacity) {
             this.vehicleLoadCapacity = vehicleLoadCapacity;
@@ -63,12 +78,13 @@ public class DeliveryVehicle {
             isAvailable = available;
             return this;
         }
-        public Builder copy(DeliveryVehicle deliveryVehicle){ //this sets the values of the builder based on existing builder object
+        public Builder copy(DeliveryVehicle deliveryVehicle){
             this.vehicleId = deliveryVehicle.vehicleId;
             this.vehicleName = deliveryVehicle.vehicleName;
+            this.vehicleLicence = deliveryVehicle.vehicleLicence;
             this.vehicleLoadCapacity = deliveryVehicle.vehicleLoadCapacity;
             this.isAvailable = deliveryVehicle.isAvailable;
-            return this; // this returns the builder object
+            return this;
         }
         public DeliveryVehicle build(){
             return new DeliveryVehicle(this);

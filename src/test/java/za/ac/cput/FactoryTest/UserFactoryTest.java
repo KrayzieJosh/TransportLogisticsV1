@@ -1,5 +1,11 @@
 package za.ac.cput.FactoryTest;
 
+/* UserFactoryTest.java
+ Package: FactoryTest
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.User;
 import za.ac.cput.factory.UserFactory;

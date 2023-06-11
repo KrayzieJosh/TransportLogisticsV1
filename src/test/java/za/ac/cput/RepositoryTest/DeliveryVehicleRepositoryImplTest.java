@@ -1,5 +1,11 @@
 package za.ac.cput.RepositoryTest;
 
+/* DeliveryVehicleRepositoryImplTest.java
+ Package: RepositoryTest
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -14,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DeliveryVehicleRepositoryImplTest {
 
     private static DeliveryVehicleRepositoryImpl repository = DeliveryVehicleRepositoryImpl.getRepository();
-    private static DeliveryVehicle deliveryVehicle = DeliveryVehicleFactory.createDeliveryVehicle(Helper.generateID(), "Izuzu Delivery Vehicle", 25000.00,
+    private static DeliveryVehicle deliveryVehicle = DeliveryVehicleFactory.createDeliveryVehicle(Helper.generateID(), "Izuzu Delivery Vehicle","04/09/2023", 25000.00,
             true);
     @Test
     void a_create() {

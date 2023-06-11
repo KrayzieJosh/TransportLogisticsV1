@@ -1,8 +1,16 @@
-package za.ac.cput.service;
+package za.ac.cput.service.serviceImpl;
+
+/* DeliveryVehicleServiceImpl.java
+ Entity for the serviceImpl
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
 
 import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.repository.DeliveryVehicleRepository;
 import za.ac.cput.repository.repositoryImpl.DeliveryVehicleRepositoryImpl;
+import za.ac.cput.service.DeliveryVehicleService;
+
 import java.util.Set;
 
 public class DeliveryVehicleServiceImpl implements DeliveryVehicleService {

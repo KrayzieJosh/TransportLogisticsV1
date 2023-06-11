@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
 
+/* User.java
+ Entity for the domain
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
 public class User {
     private String userId;
     private String userFirstName;
@@ -9,7 +14,7 @@ public class User {
     private String userEmail;
     private String userDriverCode;
 
-    private User(Builder builder) { //private constructor that takes a builder object as a parameter
+    private User(Builder builder) {
         this.userId = builder.userId;
         this.userFirstName = builder.userFirstName;
         this.userMiddleName = builder.userMiddleName;
@@ -59,7 +64,7 @@ public class User {
                 ", userDriverCode='" + userDriverCode + '\'' +
                 '}';
     }
-    public static class Builder { // nested static builder class used for constructing instances of user class
+    public static class Builder {
         private String userId;
         private String userFirstName;
         private String userMiddleName;
@@ -70,7 +75,7 @@ public class User {
 
         public Builder setUserId(String userId) {
             this.userId = userId;
-            return this; //returns builder object
+            return this;
         }
         public Builder setUserFirstName(String userFirstName) {
             this.userFirstName = userFirstName;
@@ -96,7 +101,7 @@ public class User {
             this.userDriverCode = userDriverCode;
             return this;
         }
-        public Builder copy(User user) { //sets the values of the builder based on an existing user object
+        public Builder copy(User user) {
             this.userId = user.userId;
             this.userFirstName = user.userFirstName;
             this.userMiddleName = user.userMiddleName;
@@ -104,11 +109,10 @@ public class User {
             this.userContact = user.userContact;
             this.userEmail = user.userEmail;
             this.userDriverCode = user.userDriverCode;
-            return this; // returning the builder object
+            return this;
         }
         public User build(){
-            return new User(this); //constructs a new user object using the
-            // values set in the builder and returns it
+            return new User(this);
         }
     }
 }
