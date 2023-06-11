@@ -10,11 +10,11 @@ public class Project {
     private List<SiteManager> siteManagers;
 
     private Project(ProjectBuilder projectBuilder){
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectStatus = projectStatus;
-        this.projectManagers=projectManagers;
-        this.siteManagers=siteManagers;
+        this.projectId = projectBuilder.projectId;
+        this.projectName = projectBuilder.projectName;
+        this.projectStatus = projectBuilder.projectStatus;
+        this.projectManagers=projectBuilder.projectManagers;
+        this.siteManagers=projectBuilder.siteManagers;
 
 
     }
