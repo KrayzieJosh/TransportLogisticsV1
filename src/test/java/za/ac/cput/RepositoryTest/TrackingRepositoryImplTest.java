@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TrackingRepositoryImplTest {
 
     private static TrackingRepositoryImpl repository = TrackingRepositoryImpl.getRepository();
-    private static Tracking tracking = TrackingFactory.createTracker(Helper.generateID(), 1, 2);
+    private static Tracking tracking = TrackingFactory.createTracker(Helper.generateID(),1, 2);
 
     @Test
     void a_create() {

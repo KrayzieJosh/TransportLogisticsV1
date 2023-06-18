@@ -1,12 +1,14 @@
 package za.ac.cput.service.serviceImpl;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Tracking;
 import za.ac.cput.repository.TrackingRepository;
 import za.ac.cput.repository.repositoryImpl.TrackingRepositoryImpl;
 import za.ac.cput.service.TrackingService;
 
+import java.io.Serializable;
 import java.util.Set;
-
-public class TrackingServiceImpl implements TrackingService {
+@Service
+public class TrackingServiceImpl implements TrackingService, Serializable {
     private static TrackingService service = null;
     private TrackingRepository repository = null;
 

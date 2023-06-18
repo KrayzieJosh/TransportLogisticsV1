@@ -4,9 +4,12 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Project;
+import za.ac.cput.domain.Project.ProjectBuilder;
 import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.domain.SiteManager;
+import za.ac.cput.factory.ProjectFactory;
 import za.ac.cput.factory.ProjectManagerFactory;
+import za.ac.cput.factory.SiteManagerFactory;
 import za.ac.cput.repository.repositoryImpl.ProjectManagerRepositoryImpl;
 import za.ac.cput.util.Helper;
 
@@ -17,8 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class ProjectManagerRepositoryImplTest {
 private static ProjectManagerRepositoryImpl projectManagerRepository= ProjectManagerRepositoryImpl.getProjectManagerRepository();
-private static List<Project> projects= Arrays.asList();
-   private static List<SiteManager> managers=Arrays.asList();
+private static List<Project> projects= Arrays.asList(ProjectFactory.createProject(Helper.generateID(), "Sky House Project", "Completed"));
+
+private static List<SiteManager> managers=Arrays.asList(SiteManagerFactory.createSiteManager(
+        Helper.generateID(),"construction manager",projects));
 
 private static ProjectManager manager= ProjectManagerFactory.createProjectManager( Helper.generateID(),"Foreman",projects,managers);
 

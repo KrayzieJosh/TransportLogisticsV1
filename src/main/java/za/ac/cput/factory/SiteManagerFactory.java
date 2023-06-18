@@ -4,9 +4,10 @@ import za.ac.cput.domain.Project;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.util.Helper;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class SiteManagerFactory {
+public class SiteManagerFactory implements Serializable {
 
    public static SiteManager createSiteManager(String userId,String userPosition,List<Project>userProjects){
        userId=Helper.generateID();

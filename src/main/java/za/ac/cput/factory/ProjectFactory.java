@@ -4,9 +4,10 @@ import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.util.Helper;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProjectFactory {
+public class ProjectFactory implements Serializable {
 
     public static Project createProject(String projectId, String projectName, String projectStatus){
         projectId= Helper.generateID();
