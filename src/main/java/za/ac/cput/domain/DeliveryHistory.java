@@ -5,8 +5,11 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.List;
 
+@EntityScan
 public class DeliveryHistory {
 
     private String deliveryOrderId;

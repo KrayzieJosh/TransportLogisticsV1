@@ -5,8 +5,12 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
 import java.util.List;
 
+@EntityScan
 public class Driver {
 
     private String userId;

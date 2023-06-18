@@ -5,10 +5,12 @@ package za.ac.cput.service;
  Date: 11 June 2023
 */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Driver;
 
 import java.util.Set;
 
+@Service
 public interface DriverService {
 
     Driver create(Driver driver);

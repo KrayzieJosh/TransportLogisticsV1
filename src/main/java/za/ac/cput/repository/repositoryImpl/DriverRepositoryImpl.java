@@ -8,9 +8,11 @@ package za.ac.cput.repository.repositoryImpl;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.repository.DriverRepository;
 
+@Repository
 public class DriverRepositoryImpl implements DriverRepository {
 
     private static DriverRepositoryImpl repository= null;
