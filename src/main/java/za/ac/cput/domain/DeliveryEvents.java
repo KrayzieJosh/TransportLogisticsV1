@@ -14,6 +14,9 @@ public class DeliveryEvents {
     private String deliveryEventLocation;
     private ArrayList<String> notification;
 
+    public DeliveryEvents() {
+    }
+
     private DeliveryEvents (Builder builder){
 
         this.deliveryEventId = builder.deliveryEventId;

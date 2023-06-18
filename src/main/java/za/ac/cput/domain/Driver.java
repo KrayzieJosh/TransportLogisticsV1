@@ -11,12 +11,22 @@ import java.io.Serializable;
 import java.util.List;
 
 @EntityScan
-public class Driver {
+public class Driver implements Serializable {
 
     private String userId;
     private String userPosition;
     private List<Project> userProjects;
     private String vehicleId;
+
+    public Driver() {
+    }
+
+    public Driver(String userId, String userPosition, List<Project> userProjects, String vehicleId) {
+        this.userId = userId;
+        this.userPosition = userPosition;
+        this.userProjects = userProjects;
+        this.vehicleId = vehicleId;
+    }
 
     //builder constructor:
     private Driver(Builder builder){

@@ -10,6 +10,9 @@ public class Notifications {
     private String notificationMessage;
     private String notificationStatus;
 
+    public Notifications() {
+    }
+
     private Notifications(Builder builder) {
         this.notificationId = builder.notificationId;
         this.notificationMessage =builder.notificationMessage;

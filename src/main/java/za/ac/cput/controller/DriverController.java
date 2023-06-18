@@ -3,6 +3,7 @@ package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Driver;
+import za.ac.cput.factory.DriverFactory;
 import za.ac.cput.service.DriverService;
 
 import java.util.Set;
@@ -16,6 +17,9 @@ public class DriverController {
 
     @PostMapping("/create")
     public Driver create(@RequestBody Driver driver){
+
+        Driver driverCreated = DriverFactory.createNewDriver(driver.getUserId(), driver.getUserPosition(), driver.getUserProjects(), driver.getVehicleId());
+
         return driverService.create(driver);
     }
 
