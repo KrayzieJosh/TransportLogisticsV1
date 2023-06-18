@@ -4,13 +4,14 @@ package za.ac.cput.service.serviceImpl;
    Author: Carlo Joshua Joseph (2206210781)
    Date: 23/06/10
 */
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.MaterialQuote;
 import za.ac.cput.repository.MaterialQuoteRepository;
 import za.ac.cput.repository.repositoryImpl.MaterialQuoteRepositoryImpl;
 import za.ac.cput.service.MaterialQuoteService;
 
 import java.util.Set;
-
+@Service
 public class MaterialQuoteServiceImpl implements MaterialQuoteService {
     private static MaterialQuoteService service = null;
     private MaterialQuoteRepository repository = null;
