@@ -6,7 +6,7 @@ import za.ac.cput.domain.GPS;
 import za.ac.cput.factory.GPSFactory;
 import za.ac.cput.service.GPSService;
 import java.util.List;
-/* LocationController.java
+/* GPSController.java
  Author: Joshua Jacobs (221144862)
  Date: 18 June 2023
 */

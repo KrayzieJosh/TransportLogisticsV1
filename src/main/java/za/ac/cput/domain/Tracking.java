@@ -1,6 +1,11 @@
 package za.ac.cput.domain;
 
-public class Tracking {
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
+
+@EntityScan
+public class Tracking implements Serializable {
     private String tripId;
     private int stops;
     private int detours;
@@ -30,6 +35,15 @@ public class Tracking {
                 ", stops=" + stops +
                 ", detours=" + detours +
                 '}';
+    }
+
+    public Tracking(String tripId, int stops, int detours) {
+        this.tripId = tripId;
+        this.stops = stops;
+        this.detours = detours;
+    }
+
+    public Tracking() {
     }
 
     public static class Builder{
