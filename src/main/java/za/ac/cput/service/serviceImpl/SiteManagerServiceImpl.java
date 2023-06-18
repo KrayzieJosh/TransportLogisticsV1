@@ -1,15 +1,17 @@
 package za.ac.cput.service.serviceImpl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.repository.SiteManagerRepository;
 import za.ac.cput.repository.repositoryImpl.SiteManagerRepositoryImpl;
 import za.ac.cput.service.SiteManagerService;
 
+import java.io.Serializable;
 import java.util.Set;
-
-public class SiteManagerServiceImpl implements SiteManagerService {
+@Service
+public class SiteManagerServiceImpl implements SiteManagerService, Serializable {
     private static SiteManagerService service = null;
-    private SiteManagerRepository repository = null;
+    private SiteManagerRepository repository;
 
     private SiteManagerServiceImpl(){
         repository= SiteManagerRepositoryImpl.getSiteManagerRepository();

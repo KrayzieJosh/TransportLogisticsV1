@@ -1,8 +1,12 @@
 package za.ac.cput.domain;
 
-import java.util.List;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-public class Project {
+import java.io.Serializable;
+import java.util.List;
+@EntityScan
+
+public class Project implements Serializable {
     private String projectId;
     private String projectName;
     private String projectStatus;
@@ -35,6 +39,10 @@ public class Project {
                 ", projectStatus='" + projectStatus + '\'' +
                 '}';
     }
+
+    public Project() {
+    }
+
     public static class ProjectBuilder{
         private String projectId;
         private String projectName;
