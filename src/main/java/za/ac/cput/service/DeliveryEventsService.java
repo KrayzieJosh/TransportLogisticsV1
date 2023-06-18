@@ -5,10 +5,12 @@ package za.ac.cput.service;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.DeliveryEvents;
 
 import java.util.Set;
 
+@Service
 public interface DeliveryEventsService {
     DeliveryEvents create(DeliveryEvents deliveryEvent);
 

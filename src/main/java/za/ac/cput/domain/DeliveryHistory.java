@@ -16,6 +16,7 @@ public class DeliveryHistory {
     private List<User> userId;
     private String vehicleId;
 
+    //constructor
     public DeliveryHistory() {
     }
 

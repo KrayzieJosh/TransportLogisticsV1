@@ -21,13 +21,6 @@ public class Driver implements Serializable {
     public Driver() {
     }
 
-    public Driver(String userId, String userPosition, List<Project> userProjects, String vehicleId) {
-        this.userId = userId;
-        this.userPosition = userPosition;
-        this.userProjects = userProjects;
-        this.vehicleId = vehicleId;
-    }
-
     //builder constructor:
     private Driver(Builder builder){
 
