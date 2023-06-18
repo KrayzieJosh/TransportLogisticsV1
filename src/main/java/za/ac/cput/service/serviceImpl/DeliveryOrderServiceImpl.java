@@ -4,13 +4,14 @@ package za.ac.cput.service.serviceImpl;
    Author: Carlo Joshua Joseph (2206210781)
    Date: 23/06/10
 */
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.DeliveryOrder;
 import za.ac.cput.repository.DeliveryOrderRepository;
 import za.ac.cput.repository.repositoryImpl.DeliveryOrderRepositoryImpl;
 import za.ac.cput.service.DeliveryOrderService;
 
 import java.util.Set;
-
+@Service
 public class DeliveryOrderServiceImpl implements DeliveryOrderService {
     private static DeliveryOrderService service = null;
     private DeliveryOrderRepository repository = null;

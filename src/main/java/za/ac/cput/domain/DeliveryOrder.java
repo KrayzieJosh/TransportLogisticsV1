@@ -1,5 +1,7 @@
 package za.ac.cput.domain;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.List;
 
 /*
@@ -7,7 +9,7 @@ import java.util.List;
    Author: Carlo Joshua Joseph (2206210781)
    Date: 23/06/10
 */
-
+@EntityScan
 public class DeliveryOrder {
     private String deliveryOrderId;
     private String deliveryAddress;
