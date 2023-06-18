@@ -3,10 +3,11 @@ package za.ac.cput.repository.repositoryImpl;
 import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.repository.ProjectManagerRepository;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ProjectManagerRepositoryImpl implements ProjectManagerRepository {
+public class ProjectManagerRepositoryImpl implements ProjectManagerRepository, Serializable {
 
    private static ProjectManagerRepositoryImpl projectManagerRepository=null;
    private Set<ProjectManager> projectManagerDb=null;

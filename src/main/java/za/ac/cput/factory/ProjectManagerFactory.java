@@ -5,9 +5,10 @@ import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.util.Helper;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProjectManagerFactory {
+public class ProjectManagerFactory implements Serializable {
     public static ProjectManager createProjectManager(String userId, String userPosition,
                                                       List<Project> userProjects, List<SiteManager>siteManagers) {
         userId = Helper.generateID();
@@ -23,5 +24,6 @@ public class ProjectManagerFactory {
                 .setUserProjects(userProjects).setSiteManager(siteManagers)
                 .build();
     }
+
 
 }

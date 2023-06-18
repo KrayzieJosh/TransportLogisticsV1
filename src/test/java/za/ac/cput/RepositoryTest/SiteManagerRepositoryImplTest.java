@@ -6,6 +6,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Project;
 import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.domain.SiteManager;
+import za.ac.cput.factory.ProjectFactory;
+import za.ac.cput.factory.ProjectManagerFactory;
 import za.ac.cput.factory.SiteManagerFactory;
 import za.ac.cput.repository.repositoryImpl.SiteManagerRepositoryImpl;
 import za.ac.cput.util.Helper;
@@ -19,7 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class SiteManagerRepositoryImplTest {
 
     private static SiteManagerRepositoryImpl siteManagerRepository= SiteManagerRepositoryImpl.getSiteManagerRepository();
-    private static List<Project> projects= Arrays.asList();
+    private static List<Project> projects= Arrays.asList(ProjectFactory.createProject(Helper.generateID(), "Sky House Project", "Completed"));
+
     private static SiteManager manager= SiteManagerFactory.createSiteManager( Helper.generateID(),"Construction Manager",projects);
     @Test
     void a_create() {

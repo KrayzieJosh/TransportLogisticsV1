@@ -1,13 +1,15 @@
 package za.ac.cput.service.serviceImpl;
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Project;
 import za.ac.cput.repository.ProjectRepository;
 import za.ac.cput.repository.repositoryImpl.ProjectRepositoryImpl;
 import za.ac.cput.service.ProjectService;
 
+import java.io.Serializable;
 import java.util.Set;
-
-public class ProjectServiceImpl implements ProjectService {
+@Service
+public class ProjectServiceImpl implements ProjectService, Serializable {
 
     private static ProjectService service = null;
     private ProjectRepository repository = null;

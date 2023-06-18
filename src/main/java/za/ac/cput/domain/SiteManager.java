@@ -1,11 +1,16 @@
 package za.ac.cput.domain;
 
-import java.util.List;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-public class SiteManager {
+import java.io.Serializable;
+import java.util.List;
+@EntityScan
+
+public class SiteManager implements Serializable {
     private String userId;
     private String userPosition;
     private List<Project> userProjects;
+
 
     private SiteManager(SiteManagerBuilder builder){
         this.userId=builder.userId;
@@ -14,6 +19,10 @@ public class SiteManager {
 
 
     }
+
+    public SiteManager() {
+    }
+
     public String getUserId() {
         return userId;
     }

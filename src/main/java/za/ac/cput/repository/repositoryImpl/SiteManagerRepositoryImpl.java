@@ -3,10 +3,11 @@ package za.ac.cput.repository.repositoryImpl;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.repository.SiteManagerRepository;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SiteManagerRepositoryImpl implements SiteManagerRepository {
+public class SiteManagerRepositoryImpl implements SiteManagerRepository, Serializable {
     private static SiteManagerRepositoryImpl siteManagerRepository=null;
     private Set<SiteManager> siteManagerDb=null;
     private SiteManagerRepositoryImpl(){

@@ -1,12 +1,17 @@
 package za.ac.cput.domain;
 
-import java.util.List;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.web.bind.annotation.RequestBody;
 
-public class ProjectManager{
+import java.io.Serializable;
+import java.util.List;
+@EntityScan
+public class ProjectManager implements Serializable {
     private String userId;
     private String userPosition;
     private List<Project> userProjects;
     private List<SiteManager> siteManager;
+
 
     private ProjectManager(ProjectManagerBuilder builder){
         this.userId=builder.userId;
@@ -42,6 +47,18 @@ public class ProjectManager{
                 ", siteManager=" + siteManager +
                 '}';
     }
+
+    public ProjectManager(String userId, String userPosition, List<Project> userProjects, List<SiteManager> siteManager) {
+        this.userId = userId;
+        this.userPosition = userPosition;
+        this.userProjects = userProjects;
+        this.siteManager = siteManager;
+    }
+
+    public ProjectManager() {
+    }
+
+
 
     public static class ProjectManagerBuilder{
         private String userId;
