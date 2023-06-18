@@ -34,7 +34,7 @@ public class GPSController {
     public boolean delete(@PathVariable String tripId){
         return gpsService.delete(String.valueOf(tripId));
     }
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public List<GPS> getAll(){
         return (List<GPS>) gpsService.getAll();
     }

@@ -34,7 +34,7 @@ public class LocationController {
     public boolean delete(@PathVariable String locationId){
         return locationService.delete(String.valueOf(locationId));
     }
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public List<Location> getAll(){
         return (List<Location>) locationService.getAll();
     }

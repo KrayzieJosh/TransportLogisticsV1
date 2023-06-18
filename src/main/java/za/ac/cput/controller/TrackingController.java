@@ -34,7 +34,7 @@ public class TrackingController {
     public boolean delete(@PathVariable String tripId){
         return trackingService.delete(String.valueOf(tripId));
     }
-    @GetMapping("/getAll")
+    @GetMapping("/getall")
     public List<Tracking> getAll(){
         return (List<Tracking>) trackingService.getAll();
     }

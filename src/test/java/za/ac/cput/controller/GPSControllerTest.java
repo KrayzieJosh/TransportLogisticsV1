@@ -75,7 +75,7 @@ class GPSControllerTest {
 
     @Test
     void e_getAll() {
-        String url = baseURL +"/getAll";
+        String url = baseURL +"/getall";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(url,HttpMethod.GET,entity,String.class);
