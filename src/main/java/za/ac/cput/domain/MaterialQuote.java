@@ -1,11 +1,13 @@
 package za.ac.cput.domain;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 /*
    Entity for MaterialQuote
    Author: Carlo Joshua Joseph (2206210781)
    Date: 23/06/10
 */
-
+@EntityScan
 public class MaterialQuote {
     private String materialQuoteId;
     private String materialName;
