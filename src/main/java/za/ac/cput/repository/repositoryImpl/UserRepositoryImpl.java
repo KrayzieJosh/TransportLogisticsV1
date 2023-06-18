@@ -1,10 +1,17 @@
 package za.ac.cput.repository.repositoryImpl;
+
+/* UserRepositoryImpl.java
+ Entity for the repositoryImpl
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import java.util.HashSet;
 import java.util.Set;
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
 public class UserRepositoryImpl implements UserRepository {
-    private static UserRepositoryImpl repository = null; //nothiing in customer repo yet
+    private static UserRepositoryImpl repository = null;
     private Set<User> userDB = null;
 
     private UserRepositoryImpl() {
@@ -12,8 +19,8 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     public static UserRepositoryImpl getRepository() {
-        if (repository == null) { //will return null if empty
-            repository = new UserRepositoryImpl(); //will return an object if not
+        if (repository == null) {
+            repository = new UserRepositoryImpl();
         }
         return repository;
     }
@@ -28,7 +35,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User read(String userId) {
         for (User c : userDB) {
-            if (c.getUserId().equals(userId)) //getting the object from the primary key,if thr primary key doe not match the customer id then it will return null
+            if (c.getUserId().equals(userId))
                 return c;
         }
         return null;
