@@ -21,11 +21,6 @@ import java.util.List;
 @RestController
 @SpringBootApplication
 public class Main{
-    @RequestMapping({"/","/home"})
-    String home(){
-        return "Hello Yellows";
-
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class,args);

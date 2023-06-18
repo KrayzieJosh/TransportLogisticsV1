@@ -5,7 +5,11 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
-public class Location {
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
+@EntityScan
+public class Location implements Serializable {
     private String locationId;
     private String name;
     private int streetNumber;
@@ -55,6 +59,19 @@ public class Location {
                 ", areaCode=" + areaCode +
                 '}';
     }
+
+    public Location(String locationId, String name, int streetNumber, String streetName, String townOrCity, int areaCode) {
+        this.locationId = locationId;
+        this.name = name;
+        this.streetNumber = streetNumber;
+        this.streetName = streetName;
+        this.townOrCity = townOrCity;
+        this.areaCode = areaCode;
+    }
+
+    public Location() {
+    }
+
     public static class Builder{
         private String locationId;
         private String name;

@@ -20,10 +20,10 @@ public class LocationController {
     public Location create(@RequestBody Location location){
         Location locationCreated = LocationFactory.createLocation(location.getLocationId(), location.getName(), location.getStreetNumber(), location.getStreetName(), location.getTownOrCity(), location.getAreaCode());
 
-        return locationService.create(location);
+        return locationService.create(locationCreated);
     }
     @GetMapping("/read/{locationId}")
-    public Location read(@PathVariable int locationId){
+    public Location read(@PathVariable String locationId){
         return locationService.read(String.valueOf(locationId));
     }
     @PostMapping("/update")
@@ -31,15 +31,11 @@ public class LocationController {
         return locationService.update(location);
     }
     @DeleteMapping("delete/{locationId}")
-    public boolean delete(@PathVariable int locationId){
+    public boolean delete(@PathVariable String locationId){
         return locationService.delete(String.valueOf(locationId));
     }
     @GetMapping("/getAll")
     public List<Location> getAll(){
         return (List<Location>) locationService.getAll();
-    }
-    @RequestMapping({"/","/home"})
-    String home(){
-        return"Hello universe!";
     }
 }
