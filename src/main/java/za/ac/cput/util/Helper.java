@@ -3,6 +3,7 @@ package za.ac.cput.util;
 import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Helper {
@@ -28,6 +29,22 @@ public class Helper {
         return ev.isValid(email);
 
 
+    }
+
+    public static boolean isStringNullOrEmpty(String value){
+
+        if(value.isEmpty() || value.equals("")){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isListNullOrEmpty(List list){
+
+        if(list.isEmpty()){
+            return true;
+        }
+        return false;
     }
 
 }

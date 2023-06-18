@@ -1,4 +1,11 @@
 package za.ac.cput.factory;
+
+/* UserFactory.java
+ Entity for the factory
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import za.ac.cput.domain.User;
 import za.ac.cput.util.Helper;
 

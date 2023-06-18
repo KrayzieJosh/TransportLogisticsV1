@@ -1,12 +1,18 @@
 package za.ac.cput.ServiceTest;
 
+/* UserServiceImplTest.java
+ Package: ServiceTest
+ Author: Ferdouz Allie 214038033
+ Date: 10 June 2023
+*/
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.User;
 import za.ac.cput.factory.UserFactory;
 import za.ac.cput.service.UserService;
-import za.ac.cput.service.UserServiceImpl;
+import za.ac.cput.service.serviceImpl.UserServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
