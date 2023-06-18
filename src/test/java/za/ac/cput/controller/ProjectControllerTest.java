@@ -12,67 +12,59 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
-import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.factory.ProjectManagerFactory;
-import za.ac.cput.factory.SiteManagerFactory;
-import za.ac.cput.util.Helper;
 
-import java.util.Arrays;
-import java.util.List;
+import za.ac.cput.domain.ProjectManager;
+import za.ac.cput.factory.ProjectFactory;
+import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ProjectManagerControllerTest {
-
-    static List<Project> projects= Arrays.asList(ProjectFactory.createProject(Helper.generateID(),"Project1","In progress"));
-    static List<SiteManager> managers=Arrays.asList(SiteManagerFactory.createSiteManager(
-            Helper.generateID(),"construction manager",projects));
-     static ProjectManager manager= ProjectManagerFactory.createProjectManager(
-            Helper.generateID(),"Foreman",projects,managers);
+class ProjectControllerTest {
+    static Project project= ProjectFactory.createProject(
+            Helper.generateID(),"Foreman","Done");
     @Autowired
     private TestRestTemplate restTemplate;
-    private final String baseURL = "http://localhost:8080/projectmanager";
+    private final String baseURL = "http://localhost:8080/project";
     @Test
     void a_create() {
         String url = baseURL + "/create";
         System.out.println("URL: " + url);
-      ResponseEntity<ProjectManager> postResponse=restTemplate.postForEntity(url,manager,ProjectManager.class);
-      assertNotNull(postResponse);
-      assertNotNull(postResponse.getBody());
-      ProjectManager projectManager =postResponse.getBody();
-      assertEquals(projectManager.getUserId(),projectManager.getUserId());
+        ResponseEntity<Project> postResponse=restTemplate.postForEntity(url,project,Project.class);
+        assertNotNull(postResponse);
+        assertNotNull(postResponse.getBody());
+        Project savedProject =postResponse.getBody();
+        assertEquals(savedProject.getProjectId(),savedProject.getProjectId());
 
-      assertNotNull(projectManager);
-        System.out.println("Saved data: " + projectManager);
+        assertNotNull(savedProject);
+        System.out.println("Saved data: " + savedProject);
+
+
+
     }
 
     @Test
     void b_read() {
-        String url=baseURL + "/read/"+ manager.getUserId();
+        String url=baseURL + "/read/"+ project.getProjectId();
         System.out.println("URL:" +url);
-        ResponseEntity<ProjectManager> response = restTemplate.getForEntity(url, ProjectManager.class);
+        ResponseEntity<Project> response = restTemplate.getForEntity(url, Project.class);
         System.out.println(response.getBody());
-
     }
 
     @Test
     void c_update() {
-        ProjectManager updated= new ProjectManager.ProjectManagerBuilder()
-                .copy(manager).setUserPosition("Fired").build();
+        Project updated= new Project.ProjectBuilder()
+                .copy(project).setProjectStatus("Unfinished").build();
         String url=baseURL + "/update";
         System.out.println("URL:" + url );
         System.out.println("Post data:" + updated);
-        ResponseEntity<ProjectManager> response = restTemplate.postForEntity(url,updated, ProjectManager.class);
-        assertNotNull(response.getBody());
+        ResponseEntity<Project> response = restTemplate.postForEntity(url,updated, Project.class);
     }
 
     @Test
     @Disabled
     void e_delete() {
-      String url=baseURL + "/delete/" + manager.getUserId();
+        String url=baseURL + "/delete/" + project.getProjectId();
         System.out.println("URL:" + url);
         restTemplate.delete(url);
     }
