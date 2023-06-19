@@ -1,4 +1,9 @@
 package za.ac.cput.controller;
+/* DeliveryEventsControllerTest.java
+ Entity for the controller class
+ Author: Jameelah Gallo (221110933)
+ Date: 19 June 2023
+*/
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.service.DeliveryEventsService;
 import za.ac.cput.domain.DeliveryEvents;

@@ -1,5 +1,9 @@
 package za.ac.cput.controller;
-
+/* NotificationsControllerTest.java
+ Entity for the test
+ Author: Jameelah Gallo (221110933)
+ Date: 19 June 2023
+*/
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

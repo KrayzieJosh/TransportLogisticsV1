@@ -1,4 +1,9 @@
 package za.ac.cput.controller;
+/* NotificationsController.java
+ Entity for the controller class
+ Author: Jameelah Gallo (221110933)
+ Date: 19 June 2023
+*/
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

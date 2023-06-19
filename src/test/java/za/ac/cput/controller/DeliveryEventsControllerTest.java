@@ -1,5 +1,9 @@
 package za.ac.cput.controller;
-
+/* DeliveryEventsControllerTest.java
+ Entity for the test
+ Author: Jameelah Gallo (221110933)
+ Date: 19 June 2023
+*/
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -12,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.DeliveryEvents;
+import za.ac.cput.domain.Notifications;
 import za.ac.cput.factory.DeliveryEventsFactory;
 import za.ac.cput.util.Helper;
 import java.util.ArrayList;
@@ -43,17 +48,16 @@ class DeliveryEventsControllerTest {
 
     @Test
     void a_create() {
+
         String url = baseURL + "/create";
-        System.out.println("URL: " + url);
-        // post
         ResponseEntity<DeliveryEvents> postResponse = restTemplate.postForEntity(url, deliveryEvent, DeliveryEvents.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+        DeliveryEvents savedDeliveryEvents= postResponse.getBody();
 
-        DeliveryEvents savedDeliveryEvents = postResponse.getBody();
-        assertEquals(savedDeliveryEvents.getDeliveryEventId(), savedDeliveryEvents.getDeliveryEventId());
-        System.out.println("Saved data: " + savedDeliveryEvents);
+        System.out.println("Saved data: " + deliveryEvent);
     }
+
 
 
     @Test

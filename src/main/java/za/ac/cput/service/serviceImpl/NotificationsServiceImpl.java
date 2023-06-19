@@ -5,12 +5,13 @@ package za.ac.cput.service.serviceImpl;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Notifications;
 import za.ac.cput.repository.NotificationsRepository;
 import za.ac.cput.repository.repositoryImpl.NotificationsRepositoryImpl;
 import za.ac.cput.service.NotificationsService;
 import java.util.Set;
-
+@Service
 public class NotificationsServiceImpl implements NotificationsService {
 
     private static NotificationsService service = null;

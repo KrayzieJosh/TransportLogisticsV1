@@ -5,13 +5,14 @@ package za.ac.cput.service.serviceImpl;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.DeliveryEvents;
 import za.ac.cput.repository.DeliveryEventsRepository;
 import za.ac.cput.repository.repositoryImpl.DeliveryEventsRepositoryImpl;
 import za.ac.cput.service.DeliveryEventsService;
 
 import java.util.Set;
-
+@Service
 public class DeliveryEventsServiceImpl implements DeliveryEventsService {
 
     private static DeliveryEventsService service = null;
