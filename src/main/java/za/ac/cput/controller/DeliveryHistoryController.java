@@ -3,6 +3,7 @@ package za.ac.cput.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.DeliveryHistory;
+import za.ac.cput.factory.DeliveryHistoryFactory;
 import za.ac.cput.service.DeliveryHistoryService;
 
 import java.util.Set;
@@ -16,7 +17,12 @@ public class DeliveryHistoryController {
 
     //Methods:
     @PostMapping("/create")
-    public DeliveryHistory create(@RequestBody DeliveryHistory deliveryHistory){return deliveryHistoryService.create(deliveryHistory);}
+    public DeliveryHistory create(@RequestBody DeliveryHistory deliveryHistory){
+
+        DeliveryHistory deliveryHistoryCreated = DeliveryHistoryFactory.createNewDeliveryHistory(deliveryHistory.getDeliveryOrderId(), deliveryHistory.getUserId(), deliveryHistory.getVehicleId());
+
+        return deliveryHistoryService.create(deliveryHistory);
+    }
 
     @GetMapping("/read/{id}")
     public DeliveryHistory read(@PathVariable String id){return deliveryHistoryService.read(id);}
@@ -24,6 +30,6 @@ public class DeliveryHistoryController {
     @PostMapping("/update")
     public DeliveryHistory update(@RequestBody DeliveryHistory deliveryHistory){return  deliveryHistoryService.update(deliveryHistory);}
 
-    @RequestMapping("/getAll")
+    @GetMapping("/getall")
     public Set<DeliveryHistory> getAll() {return deliveryHistoryService.getAll();}
 }

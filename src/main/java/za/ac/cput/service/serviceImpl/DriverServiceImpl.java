@@ -5,6 +5,7 @@ package za.ac.cput.service.serviceImpl;
  Date: 11 June 2023
 */
 
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Driver;
 import za.ac.cput.repository.DriverRepository;
 import za.ac.cput.repository.repositoryImpl.DriverRepositoryImpl;
@@ -12,6 +13,7 @@ import za.ac.cput.service.DriverService;
 
 import java.util.Set;
 
+@Service
 public class DriverServiceImpl implements DriverService {
 
     private static DriverService service = null;

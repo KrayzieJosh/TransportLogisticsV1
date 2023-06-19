@@ -5,12 +5,14 @@ package za.ac.cput.repository.repositoryImpl;
  Date: 11 June 2023
 */
 
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.DeliveryHistory;
 import za.ac.cput.repository.DeliveryHistoryRepository;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Repository
 public class DeliveryHistoryRepositoryImpl implements DeliveryHistoryRepository {
 
     private static DeliveryHistoryRepositoryImpl repository = null;
