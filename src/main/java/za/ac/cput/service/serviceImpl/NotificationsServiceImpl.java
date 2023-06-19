@@ -1,7 +1,7 @@
 package za.ac.cput.service.serviceImpl;
 
 /* NotificationsServiceImpl.java
- Entity for the serviceImpl
+ Entitys for the serviceImpl
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */

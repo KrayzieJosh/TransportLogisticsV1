@@ -1,6 +1,6 @@
 package za.ac.cput.controller;
 /* DeliveryEventsControllerTest.java
- Entity for the controller class
+ Entity for the controllers class
  Author: Jameelah Gallo (221110933)
  Date: 19 June 2023
 */

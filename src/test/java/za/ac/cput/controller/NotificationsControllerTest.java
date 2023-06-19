@@ -14,6 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.domain.DeliveryEvents;
 import za.ac.cput.domain.Notifications;
 import za.ac.cput.factory.NotificationsFactory;
 import za.ac.cput.util.Helper;
@@ -33,12 +34,15 @@ class NotificationsControllerTest {
     @Test
     void a_create() {
         String url = baseURL + "/create";
+        System.out.println("URL: " + url);
+        // post
         ResponseEntity<Notifications> postResponse = restTemplate.postForEntity(url, notifications, Notifications.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        Notifications savedNotifications= postResponse.getBody();
 
-        System.out.println("Saved data: " + notifications);
+        Notifications savedNotifications = postResponse.getBody();
+        assertEquals(savedNotifications.getNotificationId(), savedNotifications.getNotificationId());
+        System.out.println("Saved data: " + savedNotifications);
     }
 
 

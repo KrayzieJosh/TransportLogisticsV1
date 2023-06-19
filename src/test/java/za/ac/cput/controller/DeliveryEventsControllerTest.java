@@ -48,14 +48,16 @@ class DeliveryEventsControllerTest {
 
     @Test
     void a_create() {
-
         String url = baseURL + "/create";
+        System.out.println("URL: " + url);
+        // post
         ResponseEntity<DeliveryEvents> postResponse = restTemplate.postForEntity(url, deliveryEvent, DeliveryEvents.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
-        DeliveryEvents savedDeliveryEvents= postResponse.getBody();
 
-        System.out.println("Saved data: " + deliveryEvent);
+        DeliveryEvents savedDeliveryEvents = postResponse.getBody();
+        assertEquals(savedDeliveryEvents.getDeliveryEventId(), savedDeliveryEvents.getDeliveryEventId());
+        System.out.println("Saved data: " + savedDeliveryEvents);
     }
 
 
