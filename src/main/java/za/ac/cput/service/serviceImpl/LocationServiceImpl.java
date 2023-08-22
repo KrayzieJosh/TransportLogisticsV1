@@ -1,12 +1,14 @@
 package za.ac.cput.service.serviceImpl;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Location;
 import za.ac.cput.repository.LocationRepository;
 import za.ac.cput.repository.repositoryImpl.LocationRepositoryImpl;
 import za.ac.cput.service.LocationService;
 
+import java.io.Serializable;
 import java.util.Set;
-
-public class LocationServiceImpl implements LocationService {
+@Service
+public class LocationServiceImpl implements LocationService, Serializable {
     private static LocationService service = null;
     private LocationRepository repository = null;
 

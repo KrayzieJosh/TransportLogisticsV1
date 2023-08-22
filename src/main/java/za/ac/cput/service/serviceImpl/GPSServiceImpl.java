@@ -1,12 +1,14 @@
 package za.ac.cput.service.serviceImpl;
+import org.springframework.stereotype.Service;
 import za.ac.cput.domain.GPS;
 import za.ac.cput.repository.GPSRepository;
 import za.ac.cput.repository.repositoryImpl.GPSRepositoryImpl;
 import za.ac.cput.service.GPSService;
 
+import java.io.Serializable;
 import java.util.Set;
-
-public class GPSServiceImpl implements GPSService {
+@Service
+public class GPSServiceImpl implements GPSService, Serializable {
     private static GPSService service = null;
     private GPSRepository repository = null;
 

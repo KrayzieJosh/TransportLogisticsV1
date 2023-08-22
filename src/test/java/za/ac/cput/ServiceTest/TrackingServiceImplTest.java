@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TrackingServiceImplTest {
     private static TrackingService service=null;
 
-    public static Tracking tracking= TrackingFactory.createTracker(Helper.generateID(), 3, 11);
+    public static Tracking tracking= TrackingFactory.createTracker(Helper.generateID(),1, 11);
     public TrackingServiceImplTest(){
 
         service=  TrackingServiceImpl.getService();

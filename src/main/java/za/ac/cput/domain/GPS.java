@@ -1,6 +1,11 @@
 package za.ac.cput.domain;
 
-public class GPS {
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import java.io.Serializable;
+
+@EntityScan
+public class GPS implements Serializable {
     private String tripId;
     private String startLocationId;
     private String storeLocationId;
@@ -31,6 +36,16 @@ public class GPS {
                 ", storeLocationId='" + storeLocationId + '\'' +
                 '}';
     }
+
+    public GPS(String tripId, String startLocationId, String storeLocationId) {
+        this.tripId = tripId;
+        this.startLocationId = startLocationId;
+        this.storeLocationId = storeLocationId;
+    }
+
+    public GPS() {
+    }
+
     public static class Builder{
         private String tripId;
         private String startLocationId;
