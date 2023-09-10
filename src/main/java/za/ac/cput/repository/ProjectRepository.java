@@ -1,11 +1,10 @@
 package za.ac.cput.repository;
 
-import za.ac.cput.domain.Company;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Project;
 
-import java.util.Set;
+@Repository
+public interface ProjectRepository extends JpaRepository<Project,String> {
 
-public interface ProjectRepository extends IRepository<Project,String>  {
-
-    public Set<Project> getAll();
 }
