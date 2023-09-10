@@ -1,54 +1,57 @@
 package za.ac.cput.service.serviceImpl;
+
+/* LocationServiceImpl.java
+ Entities for the serviceImpl
+ Author: Joshua Jacobs (221144862)
+ Date: 9 June 2023
+*/
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Location;
 import za.ac.cput.repository.LocationRepository;
-import za.ac.cput.repository.repositoryImpl.LocationRepositoryImpl;
 import za.ac.cput.service.LocationService;
 
-import java.io.Serializable;
 import java.util.Set;
+
+
 @Service
-public class LocationServiceImpl implements LocationService, Serializable {
-    private static LocationService service = null;
-    private LocationRepository repository = null;
+public class LocationServiceImpl implements LocationService {
 
-    private LocationServiceImpl() {
-        repository = LocationRepositoryImpl.getRepository();
+    private LocationRepository repository;
+    @Autowired
+    private LocationServiceImpl(LocationRepository repository) {
+        this.repository = repository;
     }
 
-    public static LocationService getService() {
-        if (service == null) {
-            service = new LocationServiceImpl();
-        }
-        return service;
-    }
 
     @Override
     public Location create(Location location) {
-        Location created = repository.create(location);
-        return created;
+        return this.repository.save(location);
     }
 
     @Override
     public Location read(String locationId) {
-        Location read = repository.read(locationId);
-        return read;
+        return this.repository.findById(locationId).orElse(null);
     }
 
     @Override
     public Location update(Location location) {
-        Location updated = repository.update(location);
-        return updated;
+        if (this.repository.existsById(location.getLocationId()))
+            return this.repository.save(location);
+        return null;
     }
+
     @Override
-    public boolean delete(String locationId){
-        boolean success =repository.delete(locationId);
-        return success;
+    public boolean delete(String locationId) {
+        if (this.repository.existsById(locationId)){
+            this.repository.deleteById(locationId);
+            return true;
+        }
+        return false;
     }
+
     @Override
-    public Set<Location> getAll () {
-        return repository.getAll();
-
-
+    public Set<Location> getAll() {
+        return (Set<Location>) this.repository.findAll();
     }
 }

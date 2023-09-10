@@ -1,60 +1,57 @@
 package za.ac.cput.service.serviceImpl;
 
+/* GPSServiceImpl.java
+ Entities for the serviceImpl
+ Author: Joshua Jacobs (221144862)
+ Date: 9 June 2023
+*/
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.GPS;
 import za.ac.cput.repository.GPSRepository;
-import za.ac.cput.repository.repositoryImpl.GPSRepositoryImpl;
 import za.ac.cput.service.GPSService;
-
-import java.io.Serializable;
-import java.sql.Connection;
 
 import java.util.Set;
 
+
 @Service
-public class GPSServiceImpl implements GPSService, Serializable {
-    private static GPSService service = null;
-    private GPSRepository repository = null;
+public class GPSServiceImpl implements GPSService {
 
-    // Add a constructor that accepts a database connection
-    public GPSServiceImpl(Connection connection) {
-        repository = new GPSRepositoryImpl(connection);
-    }
-
-    public static GPSService getService(Connection connection) {
-        if (service == null) {
-            service = new GPSServiceImpl(connection);
-        }
-        return service;
+    private GPSRepository repository;
+    @Autowired
+    private GPSServiceImpl(GPSRepository repository) {
+        this.repository = repository;
     }
 
 
     @Override
     public GPS create(GPS gps) {
-        GPS created = repository.create(gps);
-        return created;
+        return this.repository.save(gps);
     }
 
     @Override
     public GPS read(String tripId) {
-        GPS read = repository.read(tripId);
-        return read;
+        return this.repository.findById(tripId).orElse(null);
     }
 
     @Override
     public GPS update(GPS gps) {
-        GPS updated = repository.update(gps);
-        return updated;
+        if (this.repository.existsById(gps.getTripId()))
+            return this.repository.save(gps);
+        return null;
     }
 
     @Override
     public boolean delete(String tripId) {
-        boolean success = repository.delete(tripId);
-        return success;
+        if (this.repository.existsById(tripId)){
+            this.repository.deleteById(tripId);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public Set<GPS> getAll() {
-        return repository.getAll();
+        return (Set<GPS>) this.repository.findAll();
     }
 }

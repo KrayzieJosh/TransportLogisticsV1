@@ -8,7 +8,6 @@ package za.ac.cput.service.serviceImpl;
 
 import za.ac.cput.domain.DeliveryHistory;
 import za.ac.cput.repository.DeliveryHistoryRepository;
-import za.ac.cput.repository.repositoryImpl.DeliveryHistoryRepositoryImpl;
 import za.ac.cput.service.DeliveryHistoryService;
 
 import java.util.Set;

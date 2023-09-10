@@ -10,7 +10,6 @@ package za.ac.cput.service.serviceImpl;
 
 import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.repository.DeliveryVehicleRepository;
-import za.ac.cput.repository.repositoryImpl.DeliveryVehicleRepositoryImpl;
 import za.ac.cput.service.DeliveryVehicleService;
 
 import java.util.Set;

@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Notifications;
 import za.ac.cput.factory.NotificationsFactory;
-import za.ac.cput.repository.repositoryImpl.NotificationsRepositoryImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;

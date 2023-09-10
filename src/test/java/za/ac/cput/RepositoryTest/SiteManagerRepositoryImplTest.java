@@ -4,12 +4,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.factory.ProjectManagerFactory;
 import za.ac.cput.factory.SiteManagerFactory;
-import za.ac.cput.repository.repositoryImpl.SiteManagerRepositoryImpl;
 import za.ac.cput.util.Helper;
 
 import java.util.Arrays;

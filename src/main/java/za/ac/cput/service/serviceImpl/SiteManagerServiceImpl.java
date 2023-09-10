@@ -3,7 +3,6 @@ package za.ac.cput.service.serviceImpl;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.SiteManager;
 import za.ac.cput.repository.SiteManagerRepository;
-import za.ac.cput.repository.repositoryImpl.SiteManagerRepositoryImpl;
 import za.ac.cput.service.SiteManagerService;
 
 import java.io.Serializable;

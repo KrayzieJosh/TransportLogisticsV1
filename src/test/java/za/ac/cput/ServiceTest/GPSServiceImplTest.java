@@ -3,33 +3,23 @@ package za.ac.cput.ServiceTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.GPS;
 import za.ac.cput.factory.GPSFactory;
 import za.ac.cput.service.GPSService;
-import za.ac.cput.service.serviceImpl.GPSServiceImpl;
 import za.ac.cput.util.Helper;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class GPSServiceImplTest {
-    private static GPSService service = null;
-    private static GPS gps = GPSFactory.createGPS(Helper.generateID(), "456-789-123", "654-987-321");
 
-    // Initialize the database connection
-    static {
-        try {
-            Connection connection = getConnection();
-            service = new GPSServiceImpl(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+    @Autowired
+    private GPSService service; // Inject the GPSService bean
+
+    private static GPS gps = GPSFactory.createGPS(Helper.generateID(), "456-789-123", "654-987-321");
 
     @Test
     void a_create() {
@@ -65,14 +55,5 @@ class GPSServiceImplTest {
     void d_getAll() {
         System.out.println("Show all:");
         System.out.println(service.getAll());
-    }
-
-    // Method for a database connection
-    private static Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/your_database";
-        Properties properties = new Properties();
-        properties.setProperty("user", "your_username");
-        properties.setProperty("password", "your_password");
-        return DriverManager.getConnection(url, properties);
     }
 }

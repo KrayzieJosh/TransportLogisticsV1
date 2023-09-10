@@ -10,7 +10,6 @@ package za.ac.cput.service.serviceImpl;
 
 import za.ac.cput.domain.User;
 import za.ac.cput.repository.UserRepository;
-import za.ac.cput.repository.repositoryImpl.UserRepositoryImpl;
 import za.ac.cput.service.UserService;
 import java.util.Set;
 

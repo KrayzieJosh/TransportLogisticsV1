@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import za.ac.cput.domain.GPS;
 import za.ac.cput.factory.GPSFactory;
-import za.ac.cput.repository.repositoryImpl.GPSRepositoryImpl;
 import za.ac.cput.util.Helper;
 
 import java.sql.Connection;
