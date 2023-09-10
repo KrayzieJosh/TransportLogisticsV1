@@ -7,47 +7,55 @@ package za.ac.cput.service.serviceImpl;
  Date: 10 June 2023
 */
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.repository.DeliveryVehicleRepository;
+import za.ac.cput.repository.repositoryImpl.DeliveryVehicleRepositoryImpl;
 import za.ac.cput.service.DeliveryVehicleService;
-import java.util.List;
-@Service
-public class DeliveryVehicleServiceImpl implements DeliveryVehicleService {
-    private DeliveryVehicleRepository repository;
 
-    @Autowired
-    private DeliveryVehicleServiceImpl(DeliveryVehicleRepository repository) {
-        this.repository = repository;
+import java.util.Set;
+
+public class DeliveryVehicleServiceImpl implements DeliveryVehicleService {
+    private static DeliveryVehicleService service = null;
+    private DeliveryVehicleRepository repository = null;
+
+    private DeliveryVehicleServiceImpl() {
+        repository = DeliveryVehicleRepositoryImpl.getRepository();
     }
+
+    public static DeliveryVehicleService getService() {
+        if (service == null) {
+            service = new DeliveryVehicleServiceImpl();
+        }
+        return service;
+    }
+
     @Override
     public DeliveryVehicle create(DeliveryVehicle deliveryVehicle) {
-
-        return this.repository.save(deliveryVehicle);
+        DeliveryVehicle created = repository.create(deliveryVehicle);
+        return created;
     }
 
     @Override
     public DeliveryVehicle read(String vehicleId) {
-        return this.repository.findById(vehicleId).orElse(null);
-        //if it
+       DeliveryVehicle readVehicle = repository.read(vehicleId);
+        return readVehicle;
     }
+
     @Override
     public DeliveryVehicle update(DeliveryVehicle deliveryVehicle) {
-        if(this.repository.existsById(deliveryVehicle.getVehicleId()))
-            return this.repository.save(deliveryVehicle);
-        return null;
+        DeliveryVehicle updateVehicle= repository.update(deliveryVehicle);
+        return updateVehicle;
     }
     @Override
-    public boolean delete(String vehicleId) {
-        if(this.repository.existsById(vehicleId)) {
-            this.repository.deleteById(vehicleId);
-            return true;
-        }
-        return false;
+    public boolean delete(String vehicleId){
+        boolean success =repository.delete(vehicleId);
+        return success;
     }
     @Override
-    public List<DeliveryVehicle> getAll() {
-        return this.repository.findAll();
+    public Set<DeliveryVehicle> getAll () {
+        return repository.getAll();
     }
 }
+
+

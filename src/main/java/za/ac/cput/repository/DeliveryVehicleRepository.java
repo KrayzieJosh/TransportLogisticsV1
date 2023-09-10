@@ -6,11 +6,8 @@ package za.ac.cput.repository;
  Date: 10 June 2023
 */
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.DeliveryVehicle;
-import java.util.List;
-
-@Repository
-public interface DeliveryVehicleRepository extends JpaRepository<DeliveryVehicle,String> {
+import java.util.Set;
+public interface DeliveryVehicleRepository extends IRepository<DeliveryVehicle,String> {
+    public Set<DeliveryVehicle> getAll();
 }

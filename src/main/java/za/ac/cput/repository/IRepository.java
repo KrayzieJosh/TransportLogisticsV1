@@ -5,7 +5,6 @@ package za.ac.cput.repository;
  Author: Joshua Jacobs (221144862)
  Date: 9 June 2023
 */
-@Deprecated
 public interface IRepository<T, ID> {
     T create(T t);
 

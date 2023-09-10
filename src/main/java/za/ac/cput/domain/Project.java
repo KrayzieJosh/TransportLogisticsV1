@@ -1,40 +1,21 @@
 package za.ac.cput.domain;
 
-import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@Entity
-@Table(name="project",schema = "")
-public class Project {
+import java.io.Serializable;
+import java.util.List;
+@EntityScan
 
-    @Id
+public class Project implements Serializable {
     private String projectId;
-    @Column(name="project_name")
     private String projectName;
-    @Column(name = "project_status")
     private String projectStatus;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_manager_id")
-    private ProjectManager projectManager;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name="site_manager_id")
-    private SiteManager siteManager;
-
-    public Project() {
-    }
-
-    public Project(String projectId, String projectName, String projectStatus) {
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectStatus = projectStatus;
-    }
 
     private Project(ProjectBuilder projectBuilder){
         this.projectId = projectBuilder.projectId;
         this.projectName = projectBuilder.projectName;
         this.projectStatus = projectBuilder.projectStatus;
-        this.projectManager=projectBuilder.projectManager;
-        this.siteManager=projectBuilder.siteManager;
 
     }
 
@@ -50,38 +31,22 @@ public class Project {
         return projectStatus;
     }
 
-    public ProjectManager getProjectManager() {
-        return projectManager;
-    }
-
-    public SiteManager getSiteManager() {
-        return siteManager;
-    }
-
-
+    @Override
     public String toString() {
         return "Project{" +
                 "projectId='" + projectId + '\'' +
                 ", projectName='" + projectName + '\'' +
                 ", projectStatus='" + projectStatus + '\'' +
-                ", projectManager=" + projectManager +
-                ", siteManager=" + siteManager +
                 '}';
     }
 
-    public String secondString(){
-        return "Project{" +
-                "projectId='" + projectId + '\'' +
-                ", projectName='" + projectName + '\'' +
-                ", projectStatus='" + projectStatus + '}';
-
+    public Project() {
     }
+
     public static class ProjectBuilder{
         private String projectId;
         private String projectName;
         private String projectStatus;
-        private ProjectManager projectManager;
-        private SiteManager siteManager;
 
         public ProjectBuilder setProjectId(String projectId) {
             this.projectId = projectId;
@@ -98,22 +63,10 @@ public class Project {
             return this;
         }
 
-        public ProjectBuilder setProjectManager(ProjectManager projectManager) {
-            this.projectManager = projectManager;
-            return this;
-        }
-
-        public ProjectBuilder setSiteManager(SiteManager siteManager) {
-            this.siteManager = siteManager;
-            return this;
-
-        }
         public Project.ProjectBuilder copy(Project project){
             this.projectId=project.projectId;
             this.projectName=project.projectName;
             this.projectStatus=project.projectStatus;
-            this.projectManager=project.projectManager;
-            this.siteManager=project.siteManager;
 
             return this;
         }
@@ -122,4 +75,5 @@ public class Project {
 
         }
     }
+
 }
