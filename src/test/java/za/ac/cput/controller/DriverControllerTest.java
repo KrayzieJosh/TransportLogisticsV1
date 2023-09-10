@@ -12,9 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.Driver;
-import za.ac.cput.domain.Project;
 import za.ac.cput.factory.DriverFactory;
-import za.ac.cput.factory.ProjectFactory;
 import za.ac.cput.util.Helper;
 
 import java.util.Arrays;
@@ -27,10 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class DriverControllerTest {
 
-    static List<Project> userProjects= Arrays.asList(ProjectFactory.createProject(Helper.generateID(),"Project1","In progress"));
-
     static Driver driver =
-            DriverFactory.createNewDriver(Helper.generateID(), "Test Position", userProjects, Helper.generateID());
+            DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver", Helper.generateID());
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -47,13 +43,13 @@ public class DriverControllerTest {
         assertNotNull(postResponse.getBody());
 
         Driver savedDriver = postResponse.getBody();
-        assertEquals(savedDriver.getUserId(), savedDriver.getUserId());
+        assertEquals(savedDriver.getDriverId(), savedDriver.getDriverId());
         System.out.println("Saved data: " + savedDriver);
     }
 
     @Test
     void b_read(){
-        String url = baseURL + "/read/" + driver.getUserId();
+        String url = baseURL + "/read/" + driver.getDriverId();
         System.out.println("URL: " + url);
         //get
         ResponseEntity<Driver> response = restTemplate.getForEntity(url, Driver.class);
@@ -64,7 +60,9 @@ public class DriverControllerTest {
     void c_update() {
         Driver updated = new Driver.Builder()
                 .copy(driver)
-                .setUserPosition("CEO")
+                .setFirstName("Enrico")
+                .setLastName("Marez")
+                .setDriverPosition("Staff Shuttle driver")
                 .build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
@@ -77,7 +75,7 @@ public class DriverControllerTest {
     @Test
     @Disabled
     void e_delete() {
-        String url = baseURL + "/delete/" + driver.getUserId();
+        String url = baseURL + "/delete/" + driver.getDriverId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

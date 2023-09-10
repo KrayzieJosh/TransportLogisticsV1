@@ -6,6 +6,7 @@ import za.ac.cput.domain.DeliveryHistory;
 import za.ac.cput.factory.DeliveryHistoryFactory;
 import za.ac.cput.service.DeliveryHistoryService;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -19,7 +20,7 @@ public class DeliveryHistoryController {
     @PostMapping("/create")
     public DeliveryHistory create(@RequestBody DeliveryHistory deliveryHistory){
 
-        DeliveryHistory deliveryHistoryCreated = DeliveryHistoryFactory.createNewDeliveryHistory(deliveryHistory.getDeliveryOrderId(), deliveryHistory.getUserId(), deliveryHistory.getVehicleId());
+        DeliveryHistory deliveryHistoryCreated = DeliveryHistoryFactory.createNewDeliveryHistory(deliveryHistory.getDeliveryOrderId(), deliveryHistory.getVehicleId());
 
         return deliveryHistoryService.create(deliveryHistory);
     }
@@ -31,5 +32,5 @@ public class DeliveryHistoryController {
     public DeliveryHistory update(@RequestBody DeliveryHistory deliveryHistory){return  deliveryHistoryService.update(deliveryHistory);}
 
     @GetMapping("/getall")
-    public Set<DeliveryHistory> getAll() {return deliveryHistoryService.getAll();}
+    public List<DeliveryHistory> getAll() {return deliveryHistoryService.getAll();}
 }

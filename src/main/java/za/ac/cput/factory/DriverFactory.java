@@ -1,38 +1,39 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Driver;
-import za.ac.cput.domain.Project;
 import za.ac.cput.util.Helper;
-
-/* DriverFactory.java
- Author: Lyle Esau (221431942)
- Date: 11 June 2023
-*/
-
-import java.util.List;
 
 public class DriverFactory {
 
-    public static Driver createNewDriver(String userId, String userPosition, List<Project> userProjects, String vehicleId){
+    public static Driver createNewDriver(String firstName, String lastName, String contact, String email, String driverPosition, String vehicleId){
 
-        if(Helper.isStringNullOrEmpty(userPosition) || Helper.isStringNullOrEmpty(userId)){
-            return null;
+            if(Helper.isStringNullOrEmpty(firstName) || Helper.isStringNullOrEmpty(lastName)){
+                return null;
+            }
+
+            if(Helper.isStringNullOrEmpty(contact) || Helper.isStringNullOrEmpty(driverPosition)){
+                return null;
+            }
+
+            if (!Helper.isValidEmail(email)){
+                return null;
+            }
+
+            if (Helper.isStringNullOrEmpty(vehicleId)){
+                return null;
+            }
+
+            String driverId = Helper.generateID();
+
+            return new Driver.Builder()
+                    .setDriverId(driverId)
+                    .setFirstName(firstName)
+                    .setLastName(lastName)
+                    .setContact(contact)
+                    .setEmail(email)
+                    .setDriverPosition(driverPosition)
+                    .setVehicleId(vehicleId)
+                    .build();
         }
-
-        if(Helper.isStringNullOrEmpty(vehicleId)){
-            return null;
-        }
-
-        if(Helper.isListNullOrEmpty(userProjects)){
-            return null;
-        }
-
-        return new Driver.Builder()
-                .setUserId(userId)
-                .setUserPosition(userPosition)
-                .setUserProjects(userProjects)
-                .setVehicleId(vehicleId)
-                .build();
-    }
 
 }

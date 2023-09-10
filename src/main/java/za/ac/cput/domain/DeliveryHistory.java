@@ -5,15 +5,14 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-import java.util.List;
-
-@EntityScan
+@Entity
 public class DeliveryHistory {
 
+    @Id
     private String deliveryOrderId;
-    private List<User> userId;
     private String vehicleId;
 
     //constructor
@@ -24,17 +23,12 @@ public class DeliveryHistory {
     private DeliveryHistory(Builder builder){
 
         this.deliveryOrderId = builder.deliveryOrderId;
-        this.userId = builder.userId;
         this.vehicleId = builder.vehicleId;
 
     }
 
     public String getDeliveryOrderId() {
         return deliveryOrderId;
-    }
-
-    public List<User> getUserId() {
-        return userId;
     }
 
     public String getVehicleId() {
@@ -45,7 +39,6 @@ public class DeliveryHistory {
     public String toString() {
         return "DeliveryHistory{" +
                 "deliveryOrderId='" + deliveryOrderId + '\'' +
-                ", userId=" + userId +
                 ", vehicleId='" + vehicleId + '\'' +
                 '}';
     }
@@ -53,16 +46,10 @@ public class DeliveryHistory {
     public static class Builder{
 
         private String deliveryOrderId;
-        private List<User> userId;
         private String vehicleId;
 
         public Builder setDeliveryOrderId(String deliveryOrderId) {
             this.deliveryOrderId = deliveryOrderId;
-            return this;
-        }
-
-        public Builder setUserId(List<User> userId) {
-            this.userId = userId;
             return this;
         }
 
@@ -74,7 +61,6 @@ public class DeliveryHistory {
         public Builder copy(DeliveryHistory deliveryHistory){
 
             this.deliveryOrderId = deliveryHistory.deliveryOrderId;
-            this.userId = deliveryHistory.userId;
             this.vehicleId = deliveryHistory.vehicleId;
             return this;
 

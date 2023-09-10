@@ -5,17 +5,21 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.io.Serializable;
-import java.util.List;
 
-@EntityScan
+@Entity
 public class Driver implements Serializable {
 
-    private String userId;
-    private String userPosition;
-    private List<Project> userProjects;
+    @Id
+    private String driverId;
+    private String firstName;
+    private String lastName;
+    private String contact;
+    private String email;
+    private String driverPosition;
     private String vehicleId;
 
     public Driver() {
@@ -24,59 +28,82 @@ public class Driver implements Serializable {
     //builder constructor:
     private Driver(Builder builder){
 
-        this.userId = builder.userId;
-        this.userPosition = builder.userPosition;
-        this.userProjects = builder.userProjects;
+        this.driverId = builder.driverId;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.contact = builder.contact;
+        this.email = builder.email;
+        this.driverPosition = builder.driverPosition;
         this.vehicleId = builder.vehicleId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getDriverId() {
+        return driverId;
     }
 
-    public String getUserPosition() {
-        return userPosition;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public List<Project> getUserProjects() {
-        return userProjects;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDriverPosition() {
+        return driverPosition;
     }
 
     public String getVehicleId() {
         return vehicleId;
     }
 
-    @Override
-    public String toString() {
-        return "Driver{" +
-                "userId='" + userId + '\'' +
-                ", userPosition='" + userPosition + '\'' +
-                ", userProjects=" + userProjects +
-                ", vehicleId='" + vehicleId + '\'' +
-                '}';
-    }
-
     public static class Builder{
 
         //attributes:
-        private String userId;
-        private String userPosition;
-        private List<Project> userProjects;
+        private String driverId;
+        private String firstName;
+        private String lastName;
+        private String contact;
+        private String email;
+        private String driverPosition;
         private String vehicleId;
 
         //setters:
-        public Builder setUserId(String userId) {
-            this.userId = userId;
+        public Builder setDriverId(String driverId) {
+            this.driverId = driverId;
             return this;
         }
 
-        public Builder setUserPosition(String userPosition) {
-            this.userPosition = userPosition;
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
             return this;
         }
 
-        public Builder setUserProjects(List<Project> userProjects) {
-            this.userProjects = userProjects;
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder setContact(String contact) {
+            this.contact = contact;
+            return this;
+        }
+
+        public Builder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public Builder setDriverPosition(String driverPosition) {
+            this.driverPosition = driverPosition;
             return this;
         }
 
@@ -88,9 +115,12 @@ public class Driver implements Serializable {
         //copy:
         public Builder copy(Driver driver){
 
-            this.userId = driver.userId;
-            this.userPosition = driver.userPosition;
-            this.userProjects = driver.userProjects;
+            this.driverId = driver.driverId;
+            this.firstName = driver.firstName;
+            this.lastName = driver.lastName;
+            this.contact = driver.contact;
+            this.email = driver.email;
+            this.driverPosition = driver.driverPosition;
             this.vehicleId = driver.vehicleId;
             return this;
         }

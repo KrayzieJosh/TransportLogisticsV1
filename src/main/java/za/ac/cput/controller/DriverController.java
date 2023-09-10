@@ -6,6 +6,7 @@ import za.ac.cput.domain.Driver;
 import za.ac.cput.factory.DriverFactory;
 import za.ac.cput.service.DriverService;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -19,7 +20,7 @@ public class DriverController {
     @PostMapping("/create")
     public Driver create(@RequestBody Driver driver){
 
-        Driver driverCreated = DriverFactory.createNewDriver(driver.getUserId(), driver.getUserPosition(), driver.getUserProjects(), driver.getVehicleId());
+      //  Driver driverCreated = DriverFactory.createNewDriver(driver.getUserId(), driver.getUserPosition(), driver.getVehicleId());
 
         return driverService.create(driver);
     }
@@ -40,7 +41,7 @@ public class DriverController {
     }
 
     @RequestMapping("/getAll")
-    public Set<Driver> getAll(){
+    public List<Driver> getAll(){
         return driverService.getAll();
     }
 
