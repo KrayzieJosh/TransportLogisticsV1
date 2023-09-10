@@ -5,14 +5,17 @@ package za.ac.cput.domain;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
-import java.util.ArrayList;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class DeliveryEvents {
+    @Id
     private String deliveryEventId;
     private String deliveryName;
     private String deliveryDate;
     private String deliveryEventLocation;
-    private ArrayList<String> notification;
+
 
     private DeliveryEvents (Builder builder){
 
@@ -20,7 +23,10 @@ public class DeliveryEvents {
         this.deliveryName = builder.deliveryName;
         this.deliveryDate = builder.deliveryDate;
         this.deliveryEventLocation = builder.deliveryEventLocation;
-        this.notification = builder.notification;
+    }
+
+    protected DeliveryEvents() {
+
     }
 
     public String getDeliveryEventId() {
@@ -39,9 +45,8 @@ public class DeliveryEvents {
         return deliveryEventLocation;
     }
 
-    public ArrayList<String> getNotification() {
-        return notification;
-    }
+
+
 
     @Override
     public String toString() {
@@ -50,7 +55,7 @@ public class DeliveryEvents {
                 ", deliveryName='" + deliveryName + '\'' +
                 ", deliveryDate='" + deliveryDate + '\'' +
                 ", deliveryEventLocation='" + deliveryEventLocation + '\'' +
-                ", notification=" + notification +
+
                 '}';
     }
 
@@ -60,7 +65,7 @@ public class DeliveryEvents {
         private String deliveryName;
         private String deliveryDate;
         private String deliveryEventLocation;
-        private ArrayList<String> notification;
+
 
 
         public Builder setDeliveryEventId(String deliveryEventId) {
@@ -85,18 +90,15 @@ public class DeliveryEvents {
             return this;
         }
 
-        public Builder setNotification(ArrayList<String> notification) {
-            this.notification = notification;
-            return this;
 
-        }
+
+
         public Builder copy(DeliveryEvents deliveryEvent){
 
             this.deliveryEventId = deliveryEvent.deliveryEventId;
             this.deliveryName = deliveryEvent.deliveryName;
             this.deliveryDate = deliveryEvent.deliveryDate;
             this.deliveryEventLocation = deliveryEvent.deliveryEventLocation;
-            this.notification = deliveryEvent.notification;
             return this;
         }
         public DeliveryEvents build(){
@@ -105,6 +107,3 @@ public class DeliveryEvents {
         }
     }
 }
-
-
-

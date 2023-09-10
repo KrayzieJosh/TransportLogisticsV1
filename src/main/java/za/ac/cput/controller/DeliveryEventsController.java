@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.service.DeliveryEventsService;
 import za.ac.cput.domain.DeliveryEvents;
 import za.ac.cput.factory.DeliveryEventsFactory;
+
+import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.*;
 
@@ -21,7 +23,7 @@ public class DeliveryEventsController {
     @PostMapping("/create")
     public DeliveryEvents create(@RequestBody DeliveryEvents deliveryEvents) {
 
-        DeliveryEvents deliveryEventsCreated = DeliveryEventsFactory.createDeliveryEvents(deliveryEvents.getDeliveryEventId(), deliveryEvents.getDeliveryName(),deliveryEvents.getDeliveryDate(),deliveryEvents.getDeliveryEventLocation(),deliveryEvents.getNotification());
+        DeliveryEvents deliveryEventsCreated = DeliveryEventsFactory.createDeliveryEvents(deliveryEvents.getDeliveryEventId(), deliveryEvents.getDeliveryName(),deliveryEvents.getDeliveryDate(),deliveryEvents.getDeliveryEventLocation());
 
         return deliveryEventsService.create(deliveryEvents);
     }
@@ -42,11 +44,13 @@ public class DeliveryEventsController {
     }
 
     @GetMapping("/getall")
-    public Set<DeliveryEvents> getAll() {
+    public List<DeliveryEvents> getAll() {
         return deliveryEventsService.getAll();
     }
 
 
 }
+
+
 
 

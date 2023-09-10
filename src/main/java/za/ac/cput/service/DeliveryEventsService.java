@@ -7,6 +7,7 @@ package za.ac.cput.service;
 */
 import za.ac.cput.domain.DeliveryEvents;
 
+import java.util.List;
 import java.util.Set;
 
 public interface DeliveryEventsService {
@@ -18,5 +19,5 @@ public interface DeliveryEventsService {
 
     boolean delete(String deliveryEventId);
 
-    public Set<DeliveryEvents> getAll();
+    public List<DeliveryEvents> getAll();
 }

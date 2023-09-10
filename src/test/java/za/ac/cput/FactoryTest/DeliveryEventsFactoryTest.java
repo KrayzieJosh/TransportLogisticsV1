@@ -17,16 +17,13 @@ class DeliveryEventsFactoryTest {
 
     public void test(){
 
-        ArrayList<String> notification = new ArrayList<>();
-        notification.add("On route");
-        notification.add("Vehicle stopped");
-        notification.add("Reached destination");
+
 
 
 
         DeliveryEvents deliveryEvent =  DeliveryEventsFactory.createDeliveryEvents
                 (Helper.generateID(),"John Wattkins","17-06-2023"
-                        ,"56 Epping Industria",notification);
+                        ,"56 Epping Industria");
 
         assertNotNull(deliveryEvent);
 

@@ -1,11 +1,16 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 /* Notifications.java
  Entity for the domain
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+@Entity
 public class Notifications {
+    @Id
     private String notificationId;
     private String notificationMessage;
     private String notificationStatus;
@@ -14,6 +19,10 @@ public class Notifications {
         this.notificationId = builder.notificationId;
         this.notificationMessage =builder.notificationMessage;
         this.notificationStatus = builder.notificationStatus;
+    }
+
+    protected Notifications() {
+
     }
 
     public String getNotificationId() {
@@ -68,6 +77,7 @@ public class Notifications {
         }
     }
 }
+
 
 
 

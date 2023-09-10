@@ -11,12 +11,12 @@ import za.ac.cput.util.Helper;
 import java.util.ArrayList;
 
 public class DeliveryEventsFactory {
-    public static DeliveryEvents createDeliveryEvents(String deliveryEventId, String deliveryName, String deliveryDate, String deliveryEventLocation, ArrayList<String> notification){
+    public static DeliveryEvents createDeliveryEvents(String deliveryEventId, String deliveryName, String deliveryDate, String deliveryEventLocation){
 
         deliveryEventId= Helper.generateID();
 
 
-        if (Helper.isNullOrEmpty(deliveryEventId)||Helper.isNullOrEmpty(deliveryName)||Helper.isNullOrEmpty(deliveryDate)||Helper.isNullOrEmpty(deliveryEventLocation)||Helper.isListEmpty(notification)){
+        if (Helper.isNullOrEmpty(deliveryEventId)||Helper.isNullOrEmpty(deliveryName)||Helper.isNullOrEmpty(deliveryDate)||Helper.isNullOrEmpty(deliveryEventLocation)){
             return null;
         }
         return new DeliveryEvents.Builder()
@@ -24,8 +24,6 @@ public class DeliveryEventsFactory {
                 .setDeliveryName(deliveryName)
                 .setDeliveryDate(deliveryDate)
                 .setDeliveryEventLocation(deliveryEventLocation)
-                .setNotification(notification)
                 .build();
     }
 }
-
