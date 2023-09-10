@@ -5,23 +5,27 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.DeliveryOrder;
 import za.ac.cput.service.DeliveryOrderService;
 
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/deliveryOrder")
-class DeliveryOrderController {
+public class DeliveryOrderController {
+
+    private final DeliveryOrderService deliveryOrderService;
 
     @Autowired
-    private DeliveryOrderService deliveryOrderService;
+    public DeliveryOrderController(DeliveryOrderService deliveryOrderService) {
+        this.deliveryOrderService = deliveryOrderService;
+    }
 
     @PostMapping("/create")
     public DeliveryOrder create(@RequestBody DeliveryOrder deliveryOrder) {
         return deliveryOrderService.create(deliveryOrder);
     }
 
-    @GetMapping("/read/{id}")
-    public DeliveryOrder read(@PathVariable String id) {
-        return deliveryOrderService.read(id);
+    @GetMapping("/read/{deliveryOrderId}")
+    public DeliveryOrder read(@PathVariable String deliveryOrderId) {
+        return deliveryOrderService.read(deliveryOrderId);
     }
 
     @PostMapping("/update")
@@ -29,8 +33,13 @@ class DeliveryOrderController {
         return deliveryOrderService.update(deliveryOrder);
     }
 
-    @RequestMapping("/getAll")
-    public Set<DeliveryOrder> getAll() {
+    @DeleteMapping("/delete/{deliveryOrderId}")
+    public boolean delete(@PathVariable String deliveryOrderId) {
+        return deliveryOrderService.delete(deliveryOrderId);
+    }
+
+    @GetMapping("/getall")
+    public List<DeliveryOrder> getAll() {
         return deliveryOrderService.getAll();
     }
 }

@@ -1,31 +1,47 @@
 package za.ac.cput.domain;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.*;
 
 import java.util.List;
 
-/*
-   Entity for DeliveryOrder
-   Author: Carlo Joshua Joseph (2206210781)
-   Date: 23/06/10
-*/
-@EntityScan
+@Entity
+@Table(name = "DeliveryOrder", schema = "")
 public class DeliveryOrder {
+
+    @Id
     private String deliveryOrderId;
+
+    @Column(name = "deliveryAddress")
     private String deliveryAddress;
+
+    @Column(name = "deliveryDate")
     private String deliveryDate;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MaterialQuote> materialQuotes;
 
-    public DeliveryOrder(Builder builder) {
+    public DeliveryOrder() {
+    }
+
+    protected DeliveryOrder(DeliveryOrderBuilder builder) {
         this.deliveryOrderId = builder.deliveryOrderId;
         this.deliveryAddress = builder.deliveryAddress;
         this.deliveryDate = builder.deliveryDate;
         this.materialQuotes = builder.materialQuotes;
     }
 
+    public DeliveryOrder(String deliveryOrderId, String deliveryAddress, String deliveryDate, List<MaterialQuote> materialQuotes) {
+        this.deliveryOrderId=deliveryOrderId;
+        this.deliveryAddress=deliveryAddress;
+        this.deliveryDate=deliveryDate;
+        this.materialQuotes=materialQuotes;
+    }
+
     public String getDeliveryOrderId() {
         return deliveryOrderId;
     }
+
+
 
     public String getDeliveryAddress() {
         return deliveryAddress;
@@ -35,49 +51,51 @@ public class DeliveryOrder {
         return deliveryDate;
     }
 
+
     public List<MaterialQuote> getMaterialQuotes() {
         return materialQuotes;
     }
 
-    @Override
-    public String toString() {
-        return "DeliveryOrder{" +
-                "deliveryOrderId='" + deliveryOrderId + '\'' +
-                ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", deliveryDate='" + deliveryDate + '\'' +
-                ", materialQuotes=" + materialQuotes +
-                '}';
-    }
 
 
+    public static class DeliveryOrderBuilder {
 
-    public static class Builder {
         private String deliveryOrderId;
         private String deliveryAddress;
         private String deliveryDate;
         private List<MaterialQuote> materialQuotes;
 
-        public Builder setDeliveryOrderId(String deliveryOrderId) {
+        public DeliveryOrderBuilder setDeliveryOrderId(String deliveryOrderId) {
             this.deliveryOrderId = deliveryOrderId;
             return this;
         }
 
-        public Builder setDeliveryAddress(String deliveryAddress) {
+        public DeliveryOrderBuilder setDeliveryAddress(String deliveryAddress) {
             this.deliveryAddress = deliveryAddress;
             return this;
         }
 
-        public Builder setDeliveryDate(String deliveryDate) {
+        public DeliveryOrderBuilder setDeliveryDate(String deliveryDate) {
             this.deliveryDate = deliveryDate;
             return this;
         }
 
-        public Builder setMaterialQuotes(List<MaterialQuote> materialQuotes) {
+        public DeliveryOrderBuilder setMaterialQuotes(List<MaterialQuote> materialQuotes) {
             this.materialQuotes = materialQuotes;
             return this;
         }
 
-        public Builder copy(DeliveryOrder deliveryOrder) {
+        @Override
+        public String toString() {
+            return "DeliveryOrderBuilder{" +
+                    "deliveryOrderId='" + deliveryOrderId + '\'' +
+                    ", deliveryAddress='" + deliveryAddress + '\'' +
+                    ", deliveryDate='" + deliveryDate + '\'' +
+                    ", materialQuotes=" + materialQuotes +
+                    '}';
+        }
+
+        public DeliveryOrderBuilder copy(DeliveryOrder deliveryOrder) {
             this.deliveryOrderId = deliveryOrder.deliveryOrderId;
             this.deliveryAddress = deliveryOrder.deliveryAddress;
             this.deliveryDate = deliveryOrder.deliveryDate;

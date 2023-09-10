@@ -57,7 +57,7 @@ class DeliveryOrderRepositoryImplTest {
                 Helper.generateID(), "Mercury", 20.00, "80 ", 4.0);
         materialQuotes.add(materialQuote3);
 
-        DeliveryOrder updated = new DeliveryOrder.Builder().copy(deliveryOrder)
+        DeliveryOrder updated = new DeliveryOrder.DeliveryOrderBuilder().copy(deliveryOrder)
                 .setDeliveryDate("2023-06-15")
                 .setMaterialQuotes(materialQuotes)
                 .build();

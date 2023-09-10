@@ -1,4 +1,4 @@
-package za.ac.cput.ControllerTest;
+package za.ac.cput.controller;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
@@ -11,80 +11,70 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.DeliveryOrder;
 import za.ac.cput.domain.MaterialQuote;
-import za.ac.cput.factory.DeliveryOrderFactory;
 import za.ac.cput.factory.MaterialQuoteFactory;
 import za.ac.cput.util.Helper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+/*
+   Entity for MaterialQuoteControllerTest
+   Author: Carlo Joshua Joseph (2206210781)
+   Date: 23/06/10
+*/
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class DeliveryOrderControllerTest {
+public class MaterialQuoteControllerTest {
 
-
-    static List<MaterialQuote> materialQuotes = new ArrayList<>(Arrays.asList(
-            MaterialQuoteFactory.createMaterialQuote(Helper.generateID(), "silver", 14.74, "100 ", 74.25),
-            MaterialQuoteFactory.createMaterialQuote(  Helper.generateID(), "Steele", 89.74, "50 ", 41.75)
-    ));
-
-
-    static DeliveryOrder deliveryOrder =
-            DeliveryOrderFactory.createDeliveryOrder(Helper.generateID(), "211 sullivan road", "2023-06-11",materialQuotes);
+    static MaterialQuote materialQuote =
+            MaterialQuoteFactory.createMaterialQuote(Helper.generateID(), "Material 1", 100,"100",4.00);
 
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private final String baseURL = "http://localhost:8080/deliveryOrder";
+    private final String baseURL = "http://localhost:8080/materialQuote";
 
     @Test
     void a_create() {
         String url = baseURL + "/create";
         System.out.println("URL: " + url);
-        // Post
-        ResponseEntity<DeliveryOrder> postResponse = restTemplate.postForEntity(url, deliveryOrder, DeliveryOrder.class);
+        ResponseEntity<MaterialQuote> postResponse = restTemplate.postForEntity(url, materialQuote, MaterialQuote.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
 
-        DeliveryOrder savedDeliveryOrder = postResponse.getBody();
-        assertEquals(savedDeliveryOrder.getDeliveryOrderId(), savedDeliveryOrder.getDeliveryOrderId());
-        System.out.println("Saved data: " + savedDeliveryOrder);
+        MaterialQuote savedMaterialQuote = postResponse.getBody();
+        assertEquals(savedMaterialQuote.getMaterialQuoteId(), savedMaterialQuote.getMaterialQuoteId());
+        System.out.println("Saved data: " + savedMaterialQuote);
     }
 
     @Test
     void b_read() {
-        String url = baseURL + "/read/" + deliveryOrder.getDeliveryOrderId();
+        String url = baseURL + "/read/" + materialQuote.getMaterialQuoteId();
         System.out.println("URL: " + url);
         // Get
-        ResponseEntity<DeliveryOrder> response = restTemplate.getForEntity(url, DeliveryOrder.class);
-        assertEquals(deliveryOrder.getDeliveryOrderId(), response.getBody().getDeliveryOrderId());
+        ResponseEntity<MaterialQuote> response = restTemplate.getForEntity(url, MaterialQuote.class);
+        assertEquals(materialQuote.getMaterialQuoteId(), response.getBody().getMaterialQuoteId());
         System.out.println(response.getBody());
     }
 
     @Test
     void c_update() {
-        DeliveryOrder updated = new DeliveryOrder.Builder()
-                .copy(deliveryOrder)
-                .setDeliveryAddress("Updated Address")
+        MaterialQuote updated = new MaterialQuote.Builder()
+                .copy(materialQuote)
+                .setMaterialName("Updated Material")
                 .build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + updated);
         // Post
-        ResponseEntity<DeliveryOrder> response = restTemplate.postForEntity(url, updated, DeliveryOrder.class);
+        ResponseEntity<MaterialQuote> response = restTemplate.postForEntity(url, updated, MaterialQuote.class);
         // assertNotNull(response.getBody());
     }
 
     @Test
     @Disabled
     void e_delete() {
-        String url = baseURL + "/delete/" + deliveryOrder.getDeliveryOrderId();
+        String url = baseURL + "/delete/" + materialQuote.getMaterialQuoteId();
         System.out.println("URL: " + url);
         restTemplate.delete(url);
     }

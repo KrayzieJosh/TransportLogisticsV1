@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.MaterialQuote;
 import za.ac.cput.service.MaterialQuoteService;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -30,7 +31,7 @@ public class MaterialQuoteController {
     }
 
     @RequestMapping("/getAll")
-    public Set<MaterialQuote> getAll() {
+    public List<MaterialQuote> getAll() {
         return materialQuoteService.getAll();
     }
 }
