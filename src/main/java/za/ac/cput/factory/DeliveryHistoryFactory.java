@@ -8,7 +8,6 @@ package za.ac.cput.factory;
 import java.util.List;
 
 import za.ac.cput.domain.DeliveryHistory;
-import za.ac.cput.domain.User;
 import za.ac.cput.util.Helper;
 
 public class DeliveryHistoryFactory {

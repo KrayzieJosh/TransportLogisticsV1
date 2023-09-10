@@ -1,6 +1,5 @@
 package za.ac.cput.service;
 
-import za.ac.cput.domain.Company;
 import za.ac.cput.domain.Project;
 
 import java.util.Set;

@@ -3,14 +3,10 @@ package za.ac.cput.ServiceTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.domain.Company;
 import za.ac.cput.domain.Project;
-import za.ac.cput.factory.CompanyFactory;
 import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.service.CompanyService;
 import za.ac.cput.service.ProjectService;
 import za.ac.cput.service.serviceImpl.ProjectServiceImpl;
-import za.ac.cput.service.serviceImpl.SiteManagerServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -8,9 +8,7 @@ package za.ac.cput.FactoryTest;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.DeliveryHistory;
-import za.ac.cput.domain.User;
 import za.ac.cput.factory.DeliveryHistoryFactory;
-import za.ac.cput.factory.UserFactory;
 import za.ac.cput.util.Helper;
 
 import java.util.ArrayList;
