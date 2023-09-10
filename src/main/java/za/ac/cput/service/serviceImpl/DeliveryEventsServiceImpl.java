@@ -5,58 +5,53 @@ package za.ac.cput.service.serviceImpl;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.DeliveryEvents;
 import za.ac.cput.repository.DeliveryEventsRepository;
-import za.ac.cput.repository.repositoryImpl.DeliveryEventsRepositoryImpl;
 import za.ac.cput.service.DeliveryEventsService;
 
-import java.util.Set;
+import java.util.List;
+
+
 @Service
 public class DeliveryEventsServiceImpl implements DeliveryEventsService {
 
-    private static DeliveryEventsService service = null;
-    private DeliveryEventsRepository repository = null;
-
-    private DeliveryEventsServiceImpl() {
-        repository = DeliveryEventsRepositoryImpl.getRepository();
+    private DeliveryEventsRepository repository;
+    @Autowired
+    private DeliveryEventsServiceImpl(DeliveryEventsRepository repository) {
+        this.repository = repository;
     }
 
-    public static DeliveryEventsService getService() {
-        if (service == null) {
-            service = new DeliveryEventsServiceImpl();
-        }
-        return service;
-    }
 
     @Override
     public DeliveryEvents create(DeliveryEvents deliveryEvent) {
-        DeliveryEvents created = repository.create(deliveryEvent);
-        return created;
-
+        return this.repository.save(deliveryEvent);
     }
 
     @Override
     public DeliveryEvents read(String deliveryEventId) {
-        DeliveryEvents readDeliveryEvents = repository.read(deliveryEventId);
-        return readDeliveryEvents;
+        return this.repository.findById(deliveryEventId).orElse(null);
     }
 
     @Override
     public DeliveryEvents update(DeliveryEvents deliveryEvent) {
-        DeliveryEvents updateDeliveryEvents = repository.update(deliveryEvent);
-        return updateDeliveryEvents;
+        if (this.repository.existsById(deliveryEvent.getDeliveryEventId()))
+            return this.repository.save(deliveryEvent);
+        return null;
     }
 
     @Override
-    public boolean delete(String deliveryEventId){
-        boolean success =repository.delete(deliveryEventId);
-        return success;
+    public boolean delete(String deliveryEventId) {
+        if (this.repository.existsById(deliveryEventId)){
+            this.repository.deleteById(deliveryEventId);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public Set<DeliveryEvents> getAll() {
-
-        return repository.getAll();
+    public List<DeliveryEvents> getAll() {
+        return this.repository.findAll();
     }
 }

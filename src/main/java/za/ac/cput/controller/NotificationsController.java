@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import za.ac.cput.domain.Notifications;
 import za.ac.cput.service.NotificationsService;
 import za.ac.cput.factory.NotificationsFactory;
+
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -42,12 +44,9 @@ public class NotificationsController {
     }
 
     @GetMapping("/getall")
-    public Set<Notifications> getAll() {
+    public List<Notifications> getAll() {
         return notificationsService.getAll();
     }
 
 
 }
-
-
-

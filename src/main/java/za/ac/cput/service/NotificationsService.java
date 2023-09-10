@@ -7,6 +7,8 @@ package za.ac.cput.service;
 */
 
 import za.ac.cput.domain.Notifications;
+
+import java.util.List;
 import java.util.Set;
 
 public interface NotificationsService  {
@@ -16,5 +18,8 @@ public interface NotificationsService  {
     Notifications read(String notificationId);
 
     Notifications update (Notifications notification);
-    public Set<Notifications> getAll();
+
+    boolean delete(String notificationId);
+
+    public List<Notifications> getAll();
 }

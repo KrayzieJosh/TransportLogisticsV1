@@ -23,23 +23,17 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DeliveryEventsControllerTest {
 
 
-    static ArrayList<String> notification;
-
-    static {
-        notification = new ArrayList<>();
-        notification.add("On route");
-        notification.add("Vehicle stopped");
-        notification.add("Reached destination");
-    }
-
     static DeliveryEvents deliveryEvent =
-            DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(),"John Wattkins","17-06-2023","56 Epping Industria"
-                    ,notification);
+            DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(),
+                    "John Wattkins"
+                    ,"17-06-2023",
+                    "56 Epping Industria");
 
 
     @Autowired
@@ -104,4 +98,5 @@ class DeliveryEventsControllerTest {
         System.out.println(response);
         System.out.println(response.getBody());
     }
+
 }

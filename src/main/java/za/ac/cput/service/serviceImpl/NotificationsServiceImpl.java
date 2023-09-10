@@ -5,52 +5,51 @@ package za.ac.cput.service.serviceImpl;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Notifications;
 import za.ac.cput.repository.NotificationsRepository;
-import za.ac.cput.repository.repositoryImpl.NotificationsRepositoryImpl;
 import za.ac.cput.service.NotificationsService;
-import java.util.Set;
+import java.util.List;
 @Service
 public class NotificationsServiceImpl implements NotificationsService {
 
-    private static NotificationsService service = null;
-    private NotificationsRepository repository = null;
+    private NotificationsRepository repository;
 
-    private NotificationsServiceImpl() {
-        repository = NotificationsRepositoryImpl.getRepository();
-    }
-
-    public static NotificationsService getService() {
-        if (service == null) {
-            service = new NotificationsServiceImpl();
-        }
-        return service;
+    @Autowired
+    private NotificationsServiceImpl(NotificationsRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public Notifications create(Notifications notification) {
-        Notifications created = repository.create(notification);
-        return created;
-
+        return this.repository.save(notification);
     }
 
     @Override
     public Notifications read(String notificationId) {
-        Notifications readNotification=repository.read(notificationId);
-        return readNotification;
+        return this.repository.findById(notificationId).orElse(null);
     }
 
     @Override
     public Notifications update(Notifications notification) {
-        Notifications updateNotifications=repository.update(notification);
-        return updateNotifications;
+        if (this.repository.existsById(notification.getNotificationId()))
+            return this.repository.save(notification);
+        return null;
     }
+
+
     @Override
-    public Set<Notifications> getAll () {
+    public boolean delete(String notificationId) {
+        if (this.repository.existsById(notificationId)){
+            this.repository.deleteById(notificationId);
+            return true;
+        }
+        return false;
+    }
 
-
-        return repository.getAll();
+    @Override
+    public List<Notifications> getAll() {
+        return this.repository.findAll();
     }
 }
-

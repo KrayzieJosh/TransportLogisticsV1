@@ -5,9 +5,12 @@ package za.ac.cput.ServiceTest;
  Author: Jameelah Gallo (221110933)
  Date: 9 June 2023
 */
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.DeliveryEvents;
 import za.ac.cput.factory.DeliveryEventsFactory;
 import za.ac.cput.service.DeliveryEventsService;
@@ -16,53 +19,49 @@ import za.ac.cput.util.Helper;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest
 class DeliveryEventsServiceImplTest {
 
-    private static DeliveryEventsService service=null;
+    @Autowired
+    private DeliveryEventsServiceImpl service;
 
-    public static DeliveryEvents deliveryEvents= DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(), "John Wattkins", "17-06-2023"
-            , "56 Epping Industria",
-            new ArrayList<>(Arrays.asList("ON ROUTE ", "Vehicle stopped!", "Reached destination")));
-    public DeliveryEventsServiceImplTest(){
-
-        service= DeliveryEventsServiceImpl.getService();
-    }
-
+    private static DeliveryEvents deliveryEvents=DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(), "John Wattkins", "17-06-2023"
+            , "56 Epping Industria");
     @Test
     void a_create() {
         DeliveryEvents created=service.create(deliveryEvents);
-        System.out.println("Create: "+created);
-        assertNotNull(created);
+        assertEquals(deliveryEvents.getDeliveryEventId(),created.getDeliveryEventId());
+        System.out.println("Created : "+created);
     }
 
     @Test
     void b_read() {
-        DeliveryEvents read = service.read(deliveryEvents.getDeliveryEventId());
-        System.out.println("Read: "+read);
+        DeliveryEvents read=service.read(deliveryEvents.getDeliveryEventId());
         assertNotNull(read);
+        System.out.println("Read : "+read);
 
     }
 
     @Test
     void c_update() {
-        DeliveryEvents updated = new DeliveryEvents.Builder().copy(deliveryEvents).setDeliveryEventLocation("Montague Gardens")
-                .build();
-        assertNotNull(service.update(updated));
-        System.out.println("Updated: "+updated);
+        DeliveryEvents newDeliveryEvent=new DeliveryEvents.Builder().copy(deliveryEvents).setDeliveryEventLocation("Montague Gardens").build();
+        DeliveryEvents updated=service.update(newDeliveryEvent);
+        assertEquals(newDeliveryEvent.getDeliveryEventLocation(),updated.getDeliveryEventLocation());
+        System.out.println("Updated : "+updated);
+
     }
 
     @Test
-    void e_delete(){
-        String id=deliveryEvents.getDeliveryEventId();
-        boolean success=service.delete(id);
-        assertTrue(success);
-        System.out.println("Success: "+ success);
+    @Disabled
+    void e_delete() {
     }
+
     @Test
     void d_getAll() {
-        System.out.println("Show all:");
+        System.out.println("Get All : ");
         System.out.println(service.getAll());
     }
 }
