@@ -1,11 +1,15 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.io.Serializable;
 
 @EntityScan
+@Entity
 public class Tracking implements Serializable {
+    @Id
     private String tripId;
     private int stops;
     private int detours;

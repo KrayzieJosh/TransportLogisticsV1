@@ -1,11 +1,15 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.io.Serializable;
 
 @EntityScan
+@Entity
 public class GPS implements Serializable {
+    @Id
     private String tripId;
     private String startLocationId;
     private String storeLocationId;

@@ -5,11 +5,15 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.io.Serializable;
 @EntityScan
+@Entity
 public class Location implements Serializable {
+    @Id
     private String locationId;
     private String name;
     private int streetNumber;
