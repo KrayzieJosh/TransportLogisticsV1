@@ -6,7 +6,7 @@ package za.ac.cput.service;
 */
 import za.ac.cput.domain.DeliveryOrder;
 
-import java.util.Set;
+import java.util.List;
 
 public interface DeliveryOrderService {
 
@@ -18,7 +18,5 @@ public interface DeliveryOrderService {
 
     boolean delete(String deliveryOrderId);
 
-    Set<DeliveryOrder> getAll();
-
+    List<DeliveryOrder> getAll();
 }
-

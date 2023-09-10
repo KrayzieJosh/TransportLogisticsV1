@@ -1,58 +1,52 @@
 package za.ac.cput.service.serviceImpl;
-/*
-   Entity for DeliveryOrderServiceImpl
-   Author: Carlo Joshua Joseph (2206210781)
-   Date: 23/06/10
-*/
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.DeliveryOrder;
 import za.ac.cput.repository.DeliveryOrderRepository;
-import za.ac.cput.repository.repositoryImpl.DeliveryOrderRepositoryImpl;
 import za.ac.cput.service.DeliveryOrderService;
 
-import java.util.Set;
+import java.util.List;
+
 @Service
 public class DeliveryOrderServiceImpl implements DeliveryOrderService {
-    private static DeliveryOrderService service = null;
-    private DeliveryOrderRepository repository = null;
 
-    private DeliveryOrderServiceImpl() {
-        repository = DeliveryOrderRepositoryImpl.getRepository();
-    }
+    private final DeliveryOrderRepository repository;
 
-    public static DeliveryOrderService getService() {
-        if (service == null) {
-            service = new DeliveryOrderServiceImpl();
-        }
-        return service;
+    @Autowired
+    public DeliveryOrderServiceImpl(DeliveryOrderRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public DeliveryOrder create(DeliveryOrder deliveryOrder) {
-        DeliveryOrder created = repository.create(deliveryOrder);
-        return created;
+        return repository.save(deliveryOrder);
     }
 
     @Override
     public DeliveryOrder read(String deliveryOrderId) {
-        DeliveryOrder readDeliveryOrder = repository.read(deliveryOrderId);
-        return readDeliveryOrder;
+        return repository.findById(deliveryOrderId).orElse(null);
     }
 
     @Override
     public DeliveryOrder update(DeliveryOrder deliveryOrder) {
-        DeliveryOrder updatedDeliveryOrder = repository.update(deliveryOrder);
-        return updatedDeliveryOrder;
+        if (repository.existsById(deliveryOrder.getDeliveryOrderId())) {
+            return repository.save(deliveryOrder);
+        }
+        return null;
     }
 
     @Override
     public boolean delete(String deliveryOrderId) {
-        boolean success = repository.delete(deliveryOrderId);
-        return success;
+        if (repository.existsById(deliveryOrderId)) {
+            repository.deleteById(deliveryOrderId);
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public Set<DeliveryOrder> getAll() {
-        return repository.getAll();
+    public List<DeliveryOrder> getAll() {
+        return repository.findAll();
     }
 }

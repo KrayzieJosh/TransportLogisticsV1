@@ -1,26 +1,48 @@
 package za.ac.cput.domain;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-/*
-   Entity for MaterialQuote
-   Author: Carlo Joshua Joseph (2206210781)
-   Date: 23/06/10
-*/
-@EntityScan
+import java.util.List;
+
+@Entity
+@Table(name = "MaterialQuote", schema = "")
 public class MaterialQuote {
+
+    @Id
     private String materialQuoteId;
+
+    @Column(name = "materialName")
     private String materialName;
+
+    @Column(name = "materialPrice")
     private double materialPrice;
+
+    @Column(name = "materialQuantity")
     private String materialQuantity;
+
+    @Column(name = "materialWeight")
     private double materialWeight;
 
-    public MaterialQuote(Builder builder) {
+    protected MaterialQuote() {
+    }
+
+    protected MaterialQuote(Builder builder) {
         this.materialQuoteId = builder.materialQuoteId;
         this.materialName = builder.materialName;
         this.materialPrice = builder.materialPrice;
         this.materialQuantity = builder.materialQuantity;
         this.materialWeight = builder.materialWeight;
+    }
+    public MaterialQuote(String materialQuoteId, String materialName, Double materialPrice, String materialQuantity, Double materialWeight) {
+        this.materialQuoteId=materialQuoteId;
+        this.materialName=materialName;
+        this.materialPrice=materialPrice;
+        this.materialQuantity=materialQuantity;
+        this.materialWeight=materialWeight;
+
     }
 
     public String getMaterialQuoteId() {
@@ -42,6 +64,8 @@ public class MaterialQuote {
     public double getMaterialWeight() {
         return materialWeight;
     }
+
+
 
     @Override
     public String toString() {
@@ -100,3 +124,4 @@ public class MaterialQuote {
         }
     }
 }
+

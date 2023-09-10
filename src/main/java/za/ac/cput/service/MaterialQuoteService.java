@@ -6,6 +6,7 @@ package za.ac.cput.service;
 */
 import za.ac.cput.domain.MaterialQuote;
 
+import java.util.List;
 import java.util.Set;
 
 public interface MaterialQuoteService {
@@ -18,5 +19,5 @@ public interface MaterialQuoteService {
 
     boolean delete(String materialQuoteId);
 
-    Set<MaterialQuote> getAll();
+    List<MaterialQuote> getAll();
 }

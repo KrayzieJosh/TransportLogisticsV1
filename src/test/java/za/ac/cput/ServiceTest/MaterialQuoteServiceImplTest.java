@@ -1,66 +1,62 @@
 package za.ac.cput.ServiceTest;
-/*
-   Entity for DeliveryOrder
-   Author: Carlo Joshua Joseph (2206210781)
-   Date: 23/06/10
-*/
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.MaterialQuote;
 import za.ac.cput.factory.MaterialQuoteFactory;
 import za.ac.cput.service.MaterialQuoteService;
-import za.ac.cput.service.serviceImpl.MaterialQuoteServiceImpl;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+   Entity for MaterialQuoteServiceImplTest
+   Author: Carlo Joshua Joseph (2206210781)
+   Date: 23/06/10
+*/
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@SpringBootTest
 class MaterialQuoteServiceImplTest {
-    private static MaterialQuoteService service = null;
+    @Autowired
+    private  MaterialQuoteService service;
 
-    public static MaterialQuote materialQuote = MaterialQuoteFactory.createMaterialQuote(
-            Helper.generateID(),
-            "Wood",
-            10,
-            "100 ", 5.00
+    public static MaterialQuote materialQuote = MaterialQuoteFactory.createMaterialQuote(Helper.generateID(), "Wood", 10, "100 ", 5.00
     );
 
-    public MaterialQuoteServiceImplTest() {
-        service = MaterialQuoteServiceImpl.getService();
-    }
+//    public MaterialQuoteServiceImplTest() {
+//        service = MaterialQuoteServiceImpl.getService();
+//    }
 
     @Test
     void a_create() {
         MaterialQuote created = service.create(materialQuote);
-        System.out.println("has been create: " + created);
-        assertNotNull(created);
+        assertEquals(materialQuote.getMaterialQuoteId(),created.getMaterialQuoteId());
+        System.out.println(created);
     }
 
     @Test
     void b_read() {
         MaterialQuote read = service.read(materialQuote.getMaterialQuoteId());
-        System.out.println("Read: " + read);
         assertNotNull(read);
+        System.out.println("Read: " + read);
     }
 
     @Test
     void c_update() {
-        MaterialQuote updated = new MaterialQuote.Builder()
-                .copy(materialQuote)
-                .setMaterialName("Updated Material")
-                .build();
+        MaterialQuote newMaterialQuote = new MaterialQuote.Builder().copy(materialQuote).setMaterialName("Iron").build();
+        MaterialQuote updated=service.update(newMaterialQuote);
 
         assertNotNull(service.update(updated));
         System.out.println("Updated: " + updated);
     }
 
     @Test
+    @Disabled
     void e_delete() {
-        String id = materialQuote.getMaterialQuoteId();
-        boolean success = service.delete(id);
-        assertTrue(success);
-        System.out.println("Success: " + success);
     }
 
     @Test

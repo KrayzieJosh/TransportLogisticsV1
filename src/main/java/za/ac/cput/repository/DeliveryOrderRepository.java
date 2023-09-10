@@ -1,14 +1,17 @@
 package za.ac.cput.repository;
 /*
-   Entity for DeliveryOrderRepository
+   Entity for MaterialQuoteRepository
    Author: Carlo Joshua Joseph (2206210781)
    Date: 23/06/10
 */
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.DeliveryOrder;
+import za.ac.cput.domain.MaterialQuote;
 
+import java.util.List;
 import java.util.Set;
+@Repository
+public interface DeliveryOrderRepository extends JpaRepository<DeliveryOrder,String> {
 
-public interface DeliveryOrderRepository extends IRepository<DeliveryOrder,String> {
-    public Set<DeliveryOrder>getAll();
 }
